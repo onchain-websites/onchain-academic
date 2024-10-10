@@ -1,0 +1,39 @@
+.text-white {
+  color: white !important;
+}
+.bg-white {
+  background: white;
+}
+.text-dark {
+  color: #212529;
+}
+.text-black {
+  color: black;
+}
+.bg-black {
+  background: black;
+}
+
+// Primary Colors
+.text-primary {
+  color: var(--primary);
+}
+.bg-primary {
+  background: var(--primary);
+}
+
+.text-gray-light {
+  color: var(--gray-light);
+}
+
+.text-gray-light-1 {
+  color: var(--gray-light-1);
+}
+
+.text-skyblue {
+  color: var(--skyblue);
+}
+
+.bg-blue-dark {
+  background-color: var(--blue-dark);
+}

@@ -1,0 +1,123 @@
+// Spacing variable
+$spacing: (
+  0: 0,
+  1: 8px,
+  2: 16px,
+  3: 20px,
+  4: 32px,
+  5: 40px,
+);
+
+// Grid columns
+$grid-columns: 12;
+
+// Breakpoints
+$breakpoints: (
+  xs: 410px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1306px,
+  // xxl: 1400px,
+);
+
+// Container max widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1306px,
+  // xxl: 1320px,
+) !default;
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--gutter-y));
+  margin-right: calc(-0.5 * var(--gutter-x));
+  margin-left: calc(-0.5 * var(--gutter-x));
+}
+.row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--gutter-x) * 0.5);
+  padding-left: calc(var(--gutter-x) * 0.5);
+  margin-top: var(--gutter-y);
+}
+.d-none {
+  display: none;
+}
+.d-block {
+  display: block !important;
+}
+.container {
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+@for $i from 1 through 5 {
+  .show-line-#{$i} {
+    -webkit-box-orient: vertical;
+    display: -webkit-box !important;
+    overflow: hidden;
+    -webkit-line-clamp: $i;
+  }
+}
+
+// Loop breakpoint
+
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    flex: 0 0 auto;
+    width: calc(#{$i} / #{$grid-columns} * 100%);
+  }
+}
+@each $size, $space in $spacing {
+  // Gutter classes
+  .g-#{$size},
+  .gx-#{$size} {
+    --gutter-x: #{$space};
+  }
+
+  .g-#{$size},
+  .gy-#{$size} {
+    --gutter-y: #{$space};
+  }
+}
+@each $breakpoint, $width in $breakpoints {
+  @media (min-width: $width) {
+    .container {
+      max-width: map-get($container-max-widths, $breakpoint);
+      margin-right: auto;
+      margin-left: auto;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    .d-#{#{$breakpoint}}-block {
+      display: block;
+    }
+    .d-#{#{$breakpoint}}-flex {
+      display: flex;
+    }
+    @for $i from 1 through $grid-columns {
+      .col-#{$breakpoint}-#{$i} {
+        flex: 0 0 auto;
+        width: calc(#{$i} / #{$grid-columns} * 100%);
+      }
+    }
+
+    @each $size, $space in $spacing {
+      // Gutter classes
+      .g-#{$breakpoint}-#{$size},
+      .gx-#{$breakpoint}-#{$size} {
+        --gutter-x: #{$space};
+      }
+
+      .g-#{$breakpoint}-#{$size},
+      .gy-#{$breakpoint}-#{$size} {
+        --gutter-y: #{$space};
+      }
+    }
+  }
+}

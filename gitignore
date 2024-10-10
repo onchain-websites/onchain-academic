@@ -1,0 +1,31 @@
+# Wordpress - ignore configuration, uploads, examples and logs.
+
+# Configuration
+/wp-config.php
+
+# Example themes
+/wp-content/themes/twenty*/
+
+# Log files
+*.log
+
+# Uploads
+/wp-content/uploads/
+
+# Node Modules 
+
+node_modules
+
+# Wflogs
+/wp-content/wflogs
+
+# Updraft
+/wp-content/updraft
+
+# AllInOne
+/wp-content/ai1wm-backups
+
+# WP ROCKET
+/wp-content/wp-rocket-config
+/wp-content/advanced-cache.php
+/wp-content/cache

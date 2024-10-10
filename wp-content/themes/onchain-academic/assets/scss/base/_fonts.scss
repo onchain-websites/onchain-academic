@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Gilroy-Medium";
+  src: url('./../fonts/GilroyMedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy-Semibold";
+  src: url('./../fonts/GilroySemiBold.ttf') format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url('./../fonts/GilroyBold.ttf') format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy-Extrabold";
+  src: url('./../fonts/GilroyExtraBold.ttf') format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Abel";
+  src: url('./../fonts/abel-regular.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+// classes
+.font-gilroy-medium {
+  font-family: "Gilroy-Medium", sans-serif !important;
+  font-weight: 500;
+}
+.font-gilroy-semibold {
+  font-family: "Gilroy-Semibold", sans-serif !important;
+  font-weight: 600;
+}
+.font-gilroy-bold {
+  font-family: "Gilroy-Bold", sans-serif !important;
+  font-weight: 700;
+}
+.font-gilroy-extrabold {
+  font-family: "Gilroy-Extrabold", sans-serif !important;
+  font-weight: 800;
+}
+
+.font-abel {
+  font-family: "Abel" !important;
+  font-weight: 400;
+}

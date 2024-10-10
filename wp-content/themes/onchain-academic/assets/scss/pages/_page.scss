@@ -1,0 +1,25 @@
+.default-sec {
+    min-height: calc(100vh - 105px);
+
+    ul {
+        padding-left: 24px;
+        margin-bottom: 1rem;
+
+        li {
+            list-style: disc;
+        }
+    }
+}
+
+
+@media (max-width: 992px) {
+    .default-sec {
+        min-height: calc(100vh - 125px);
+    }
+}
+
+@media (max-width: 475px) {
+    .default-sec {
+        min-height: calc(100vh - 165px);
+    }
+}
