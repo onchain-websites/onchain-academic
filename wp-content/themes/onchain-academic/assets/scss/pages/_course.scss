@@ -52,7 +52,6 @@
                 right: 0;
             }
         }
-
     }
     .slick-arrow {
         background-color: rgba(#fff, 0.2);
@@ -147,9 +146,15 @@
             width: calc(100% - 200px);
             max-width: 400px;
         }
-        .custom-border,
-        img {
+        .custom-border {
             border-radius: 20px;
+            z-index: 1;
+        }
+        &.vimeo-wrapper {
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 20px;
+            overflow: hidden;
         }
     }
     .course-author-wrapper {
@@ -157,6 +162,8 @@
         z-index: 1;
         .course-profile-img {
             border-radius: 8px;
+            object-fit: cover;
+            object-position: center;
         }
         .custom-border {
             border-width: 2px;
@@ -164,12 +171,25 @@
         }
     }
 }
+#moduleSelector {
+    padding: 12px 16px;
+    background-color: rgba(#fff, .3);
+    color: white;
+    border: none;
+    outline: none;
+    option {
+        color: var(--black);
+    }
+}
+#courses-container {
+    min-height: 268px;
+}
 .notes-texarea {
     background-color: transparent;
     border: none;
     width: 100%;
-    height: 100%;
     color: white;
+    flex-grow: 1;
     &:focus {
         outline: none;
     }

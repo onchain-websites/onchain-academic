@@ -8,9 +8,10 @@
     "home": "sass --watch assets/scss/pages/_home.scss assets/css/home.css --style compressed",
     "course": "sass --watch assets/scss/pages/_course.scss assets/css/course.css --style compressed",
     "auth": "sass --watch assets/scss/pages/_auth.scss assets/css/auth.css --style compressed",
+    "notes": "sass --watch assets/scss/pages/_notes.scss assets/css/notes.css --style compressed",
     "font": "sass --watch assets/scss/base/_fonts.scss assets/css/fonts.css --style compressed",
     "compile-main-sass": "sass --watch theme_styles.scss theme_styles.css --style compressed",
-    "compile-sass": "concurrently  \"npm run compile-main-sass\" \"npm run components\" \"npm run base\" \"npm run font\" \"npm run home\" \"npm run course\" \"npm run auth\""
+    "compile-sass": "concurrently  \"npm run compile-main-sass\" \"npm run components\" \"npm run base\" \"npm run font\" \"npm run home\" \"npm run course\" \"npm run auth\" \"npm run notes\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

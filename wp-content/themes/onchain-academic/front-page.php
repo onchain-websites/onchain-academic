@@ -5,11 +5,11 @@
     <div class="container">
         <div class="hero-slider single-slider single">
             <a href="course.html" class="slider-item">
-                <img src="<?= $theme_url;?>/assets/img/dummy-hero-slide.webp" alt="slider-img" class="slider-img img-fluid"
+                <img src="<?= $theme_url; ?>/assets/img/dummy-hero-slide.webp" alt="slider-img" class="slider-img img-fluid"
                     width="1276" height="526">
             </a>
             <a href="course.html" class="slider-item">
-                <img src="<?= $theme_url;?>/assets/img/dummy-hero-slide.webp" alt="slider-img" class="slider-img img-fluid"
+                <img src="<?= $theme_url; ?>/assets/img/dummy-hero-slide.webp" alt="slider-img" class="slider-img img-fluid"
                     width="1276" height="526">
             </a>
         </div>
@@ -27,7 +27,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -36,11 +36,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -61,11 +61,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -86,11 +86,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -111,11 +111,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -136,11 +136,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -171,11 +171,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -196,11 +196,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -221,11 +221,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -237,7 +237,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -246,11 +246,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -262,7 +262,7 @@
             <div class="slider-item">
                 <a href="course.html">
                     <div class="img-wrapper mb-2">
-                        <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                             class="slider-img img-fluid" width="304" height="170">
                         <div class="custom-border"></div>
                     </div>
@@ -271,11 +271,11 @@
                 </a>
                 <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                         <a href="" class="text-skyblue">Nate Belmar</a>
                     </div>
                     <div class="d-flex align-items-center" style="gap: 6px;">
-                        <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
+                        <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                         <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                     </div>
                 </div>
@@ -294,11 +294,11 @@
         <div class="position-relative" style="padding: 1px;">
             <div class="single-slider single">
                 <a href="course.html" class="slider-item">
-                    <img src="<?= $theme_url;?>/assets/img/dummy-hero-slide-2.webp" alt="slider-img"
+                    <img src="<?= $theme_url; ?>/assets/img/dummy-hero-slide-2.webp" alt="slider-img"
                         class="slider-img img-fluid" width="1276" height="526">
                 </a>
                 <a href="course.html" class="slider-item">
-                    <img src="<?= $theme_url;?>/assets/img/dummy-hero-slide-2.webp" alt="slider-img"
+                    <img src="<?= $theme_url; ?>/assets/img/dummy-hero-slide-2.webp" alt="slider-img"
                         class="slider-img img-fluid" width="1276" height="526">
                 </a>
             </div>
@@ -319,7 +319,7 @@
                 <div class="slider-item">
                     <a href="course.html">
                         <div class="img-wrapper mb-2">
-                            <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                            <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                                 class="slider-img img-fluid" width="304" height="170">
                             <div class="custom-border"></div>
                         </div>
@@ -329,12 +329,12 @@
                     </a>
                     <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12"
                                 height="12">
                             <a href="" class="text-skyblue">Nate Belmar</a>
                         </div>
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
                                 height="13">
                             <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                         </div>
@@ -348,7 +348,7 @@
                 <div class="slider-item">
                     <a href="course.html">
                         <div class="img-wrapper mb-2">
-                            <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                            <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                                 class="slider-img img-fluid" width="304" height="170">
                             <div class="custom-border"></div>
                         </div>
@@ -358,12 +358,12 @@
                     </a>
                     <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12"
                                 height="12">
                             <a href="" class="text-skyblue">Nate Belmar</a>
                         </div>
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
                                 height="13">
                             <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                         </div>
@@ -377,7 +377,7 @@
                 <div class="slider-item">
                     <a href="course.html">
                         <div class="img-wrapper mb-2">
-                            <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                            <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                                 class="slider-img img-fluid" width="304" height="170">
                             <div class="custom-border"></div>
                         </div>
@@ -387,12 +387,12 @@
                     </a>
                     <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12"
                                 height="12">
                             <a href="" class="text-skyblue">Nate Belmar</a>
                         </div>
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
                                 height="13">
                             <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                         </div>
@@ -406,7 +406,7 @@
                 <div class="slider-item">
                     <a href="course.html">
                         <div class="img-wrapper mb-2">
-                            <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                            <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                                 class="slider-img img-fluid" width="304" height="170">
                             <div class="custom-border"></div>
                         </div>
@@ -416,12 +416,12 @@
                     </a>
                     <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12"
                                 height="12">
                             <a href="" class="text-skyblue">Nate Belmar</a>
                         </div>
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
                                 height="13">
                             <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                         </div>
@@ -435,7 +435,7 @@
                 <div class="slider-item">
                     <a href="course.html">
                         <div class="img-wrapper mb-2">
-                            <img src="<?= $theme_url;?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
+                            <img src="<?= $theme_url; ?>/assets/img/dummy-course-2.webp" alt="course-thumbnail"
                                 class="slider-img img-fluid" width="304" height="170">
                             <div class="custom-border"></div>
                         </div>
@@ -445,12 +445,12 @@
                     </a>
                     <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/person.svg" alt="person-img" width="12"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12"
                                 height="12">
                             <a href="" class="text-skyblue">Nate Belmar</a>
                         </div>
                         <div class="d-flex align-items-center" style="gap: 6px;">
-                            <img src="<?= $theme_url;?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
+                            <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
                                 height="13">
                             <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                         </div>
@@ -472,40 +472,7 @@
             <p class="mb-3">¿Has dejado a medias algún vídeo...?</p>
         </div>
 
-        <div class="three-slider multiple overlay overlay-black">
-            <div class="slider-item">
-                <div class="img-wrapper mb-2">
-                    <video src="" poster="<?= $theme_url;?>/assets/img/dummy-video-poster.webp"
-                        class="slider-video d-block"></video>
-                    <div class="custom-border"></div>
-                    <a href="#" class="play-btn"><img src="<?= $theme_url;?>/assets/img/icons/play.svg" alt="play-ico"></a>
-                </div>
-            </div>
-            <div class="slider-item">
-                <div class="img-wrapper mb-2">
-                    <video src="" poster="<?= $theme_url;?>/assets/img/dummy-video-poster.webp"
-                        class="slider-video d-block"></video>
-                    <div class="custom-border"></div>
-                    <a href="#" class="play-btn"><img src="<?= $theme_url;?>/assets/img/icons/play.svg" alt="play-ico"></a>
-                </div>
-            </div>
-            <div class="slider-item">
-                <div class="img-wrapper mb-2">
-                    <video src="" poster="<?= $theme_url;?>/assets/img/dummy-video-poster.webp"
-                        class="slider-video d-block"></video>
-                    <div class="custom-border"></div>
-                    <a href="#" class="play-btn"><img src="<?= $theme_url;?>/assets/img/icons/play.svg" alt="play-ico"></a>
-                </div>
-            </div>
-            <div class="slider-item">
-                <div class="img-wrapper mb-2">
-                    <video src="" poster="<?= $theme_url;?>/assets/img/dummy-video-poster.webp"
-                        class="slider-video d-block"></video>
-                    <div class="custom-border"></div>
-                    <a href="#" class="play-btn"><img src="<?= $theme_url;?>/assets/img/icons/play.svg" alt="play-ico"></a>
-                </div>
-            </div>
-        </div>
+        <div class="three-slider multiple overlay overlay-black" id="continue-slider"></div>
     </div>
 </section>
 <section class="default-sec courses-sec">
@@ -517,35 +484,35 @@
         <div class="multiple-slider multiple overlay overlay-black">
             <div class="slider-item">
                 <div class="img-wrapper">
-                    <img src="<?= $theme_url;?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
+                    <img src="<?= $theme_url; ?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
                         class="slider-img img-fluid" width="304" height="387">
                     <div class="custom-border"></div>
                 </div>
             </div>
             <div class="slider-item">
                 <div class="img-wrapper">
-                    <img src="<?= $theme_url;?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
+                    <img src="<?= $theme_url; ?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
                         class="slider-img img-fluid" width="304" height="387">
                     <div class="custom-border"></div>
                 </div>
             </div>
             <div class="slider-item">
                 <div class="img-wrapper">
-                    <img src="<?= $theme_url;?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
+                    <img src="<?= $theme_url; ?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
                         class="slider-img img-fluid" width="304" height="387">
                     <div class="custom-border"></div>
                 </div>
             </div>
             <div class="slider-item">
                 <div class="img-wrapper">
-                    <img src="<?= $theme_url;?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
+                    <img src="<?= $theme_url; ?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
                         class="slider-img img-fluid" width="304" height="387">
                     <div class="custom-border"></div>
                 </div>
             </div>
             <div class="slider-item">
                 <div class="img-wrapper">
-                    <img src="<?= $theme_url;?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
+                    <img src="<?= $theme_url; ?>/assets/img/dummy-comming-soon.webp" alt="course-thumbnail"
                         class="slider-img img-fluid" width="304" height="387">
                     <div class="custom-border"></div>
                 </div>
@@ -553,5 +520,36 @@
         </div>
     </div>
 </section>
+
+<script>
+    jQuery(document).ready(function($) {
+        // Retrieve the 'visitedUrls' array from localStorage
+        let visitedUrls = JSON.parse(localStorage.getItem('visitedUrls')) || [];
+
+        // Target the container where you want to append the slider items
+        const $sliderContainer = $('#continue-slider');
+
+        // Loop through the visited URLs array and create slider items
+        $.each(visitedUrls, function(index, url) {
+            let urlParams = new URLSearchParams(new URL(url).search);
+            
+            let videoThumb = urlParams.get('videothumb');
+            console.log(videoThumb);
+            // Create the slider-item HTML structure
+            const sliderItem = `
+            <div class="slider-item">
+                <div class="img-wrapper mb-2">
+                    <img src="${decodeURIComponent(videoThumb)}" class="slider-video d-block" width="304" height="170">
+                    <div class="custom-border"></div>
+                    <a href="${url}" class="play-btn"><img src="<?= $theme_url; ?>/assets/img/icons/play.svg" alt="play-ico"></a>
+                </div>
+            </div>
+        `;
+
+            // Append the newly created slider-item to the container
+            $sliderContainer.append(sliderItem);
+        });
+    });
+</script>
 
 <?= get_footer(); ?>

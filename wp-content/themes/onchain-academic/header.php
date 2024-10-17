@@ -59,7 +59,9 @@ $current_user = wp_get_current_user();
                                     <?php endif; ?>
                                 </span>
                                 <p class="mb-2"><?= $current_user->user_email; ?></p>
-                                <div class="w-100 mb-2" style="border-bottom: 1px solid #55C2FF; opacity: .3;"></div>
+                                <div class="w-100" style="border-bottom: 1px solid #55C2FF; opacity: .3; margin: 16px 0;"></div>
+                                <a href="<?= home_url('/notes') ?>" class="fw-medium d-block">Notes</a>
+                                <div class="w-100" style="border-bottom: 1px solid #55C2FF; opacity: .3; margin: 16px 0;"></div>
                                 <a href="<?= wp_logout_url(home_url()) ?>" class="fw-medium text-skyblue">Logout</a>
                             </div>
                         </div>
