@@ -1,7 +1,7 @@
 # Wordpress - ignore configuration, uploads, examples and logs.
 
 # Configuration
-/wp-config.php
+wp-config.php
 
 # Example themes
 /wp-content/themes/twenty*/
@@ -10,7 +10,7 @@
 *.log
 
 # Uploads
-/wp-content/uploads/
+wp-content/uploads/
 
 # Node Modules 
 

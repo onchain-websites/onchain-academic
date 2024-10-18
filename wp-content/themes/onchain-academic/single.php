@@ -9,7 +9,26 @@
                     <img src="<?= get_the_post_thumbnail_url(); ?>" alt="course-thumbnail" class="img-fluid"
                         width="844" height="526">
                     <div class="custom-border"></div>
-                    <a href="course-single.html" class="btn btn-light play-btn-text">Play</a>
+                    <?php if (have_rows('module')) : ?>
+                        <?php $module_count = 0; ?>
+                        <?php while (have_rows('module')) : the_row(); ?>
+                            <?php $module_count++; ?>
+                        <?php endwhile; ?>
+                        <?php $first_module = true; ?>
+                        <?php while (have_rows('module') && $first_module) : the_row(); ?>
+                            <?php if (have_rows('video')) : ?>
+                                <?php $lesson_index = 1; ?>
+                                <?php $first_video = true; ?>
+                                <?php while (have_rows('video') && $first_video) : the_row(); ?>
+                                    <?php $video_thumbnail = get_sub_field('video_thumbnail'); ?>
+                                    <button type="button" class="btn btn-light play-btn-text video-play-btn-query" data-video="<?php the_sub_field('video_url'); ?>" data-postid="<?= get_the_ID(); ?>" data-videotitle="<?php the_sub_field('video_title'); ?>" data-modulecount="<?= $module_count; ?>" data-currentmodule="1" data-videothumb="<?= esc_url($video_thumbnail['url']); ?>">Play</button>
+                                    <?php $lesson_index++; ?>
+                                    <?php $first_video = false; ?>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
+                            <?php $first_module = false; ?>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="col-xl-4">
@@ -88,7 +107,7 @@
                                             class="slider-img img-fluid" width="304" height="170">
                                     <?php endif; ?>
                                     <div class="custom-border"></div>
-                                    <button type="button" class="play-btn video-play-btn-query" data-video="<?php the_sub_field('video_url'); ?>" data-postid="<?= get_the_ID(); ?>" data-videotitle="<?php the_sub_field('video_title'); ?>" data-modulecount="<?= $module_count; ?>" data-currentmodule="1" data-videothumb="<?=esc_url($video_thumbnail['url']); ?>"><img src="<?= $theme_url ?>/assets/img/icons/play.svg" alt="play-ico"></button>
+                                    <button type="button" class="play-btn video-play-btn-query" data-video="<?php the_sub_field('video_url'); ?>" data-postid="<?= get_the_ID(); ?>" data-videotitle="<?php the_sub_field('video_title'); ?>" data-modulecount="<?= $module_count; ?>" data-currentmodule="1" data-videothumb="<?= esc_url($video_thumbnail['url']); ?>"><img src="<?= $theme_url ?>/assets/img/icons/play.svg" alt="play-ico"></button>
                                 </div>
                                 <span class="d-block fs-20 font-gilroy-bold" style="text-transform: uppercase;">L-<?= $lesson_index; ?>: <?php the_sub_field('video_title'); ?></span>
                             </div>
@@ -118,7 +137,7 @@
                 var postId = $(this).attr('data-postid');
 
                 if (videoID && postId && videoTitle) {
-                    window.location.href = '/play?video=' + encodeURIComponent(videoID) + '&postid=' + encodeURIComponent(postId) + '&videotitle=' + encodeURIComponent(videoTitle) + '&modulecount=' + encodeURIComponent(moduleCount)+ '&currentmodule=' + encodeURIComponent(currentModule) + '&videothumb=' + encodeURIComponent(videoThumb);
+                    window.location.href = '/play?video=' + encodeURIComponent(videoID) + '&postid=' + encodeURIComponent(postId) + '&videotitle=' + encodeURIComponent(videoTitle) + '&modulecount=' + encodeURIComponent(moduleCount) + '&currentmodule=' + encodeURIComponent(currentModule) + '&videothumb=' + encodeURIComponent(videoThumb);
                 } else {
                     alert('Video not found contact support!')
                 }

@@ -72,6 +72,8 @@ class OnchainTheme
         } elseif (is_single()) {
             wp_enqueue_style('single', get_template_directory_uri() . '/assets/css/course.css', array(), date("ymd-Gis", filemtime(get_template_directory())));
         } elseif (is_home()) {
+            wp_enqueue_style('home', get_template_directory_uri() . '/assets/css/home.css', array(), date("ymd-Gis", filemtime(get_template_directory())));
+
         } else {
 
             $post = get_post();
@@ -215,7 +217,8 @@ function create_custom_post_type()
             'slug' => 'course',
             'with_front' => false,
         ),
-        'supports' => array('title', 'editor', 'thumbnail')
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'taxonomies' => array('category')
     );
 
     register_post_type('course', $args);
