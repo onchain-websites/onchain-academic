@@ -120,7 +120,7 @@ jQuery(document).ready(function ($) {
   });
 
   // Close modal when the 'x' is clicked
-  $('.close').click(function () {
+  $('.close-modal').click(function () {
     $(this).closest('.modal').removeClass('fade show'); // Close the closest modal
   });
 

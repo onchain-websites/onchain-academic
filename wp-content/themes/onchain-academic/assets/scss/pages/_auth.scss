@@ -41,34 +41,66 @@
             right: 20px;
             transform: translateY(-50%);
         }
-        .custom-btn {
-            background-color: #4366cc;
-            border: none;
-            width: 100%;
-            background-size: 100% 100%;
-            padding: 18px;
-            display: block;
-            max-height: unset;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            color: white;
-            box-shadow: inset 0px 0px 5px #BDACFF, 0px 10px 20px rgba(#000, 0.25);
-            &::before {
-                content: "";
-                position: absolute;
-                width: 200%;
-                height: 100%;
-                background: rgb(0, 0, 0);
-                background: radial-gradient(circle, rgba(#000, .9) 0%, rgba(#000, 0) 100%);
-                filter: blur(20px);
-                border-radius: 50%;
-                top: 20px;
-                left: 76%;
-                transform: translateX(-50%) rotate(7deg);
-                z-index: 0;
-            }
+    }
+    .profile-img-wrapper {
+        padding: 3px;
+        background-image: url("./../../assets/img/profile-img-bg-2.svg");
+        background-size: 100% 100%;
+        position: relative;
+        margin-bottom: 30px;
+        cursor: pointer;
+        .profile-pic {
+            mask-image: url("./../../assets/img/profile-clip.png");
+            mask-size: cover;
+            width: 108px;
+            height: 96px;
+            min-width: 108px;
+            min-height: 96px;
+            object-fit: cover;
+            object-position: center;
         }
+        .camera-icon {
+            position: absolute;
+            top: 24px;
+            right: -16px;
+        }
+        #profile_image {
+            position: absolute;
+        }
+    }
+
+}
+.tabs {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    .tablink {
+        border-bottom: 2px solid transparent;
+        padding: 10px 20px;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+        background-color: transparent;
+        &:hover,
+        &.active {
+            border-bottom: 2px solid var(--skyblue);
+        }
+    }
+}
+
+.tabcontent {
+    display: none;
+    border-top: none;
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 18px;
     }
 }
 

@@ -1,5 +1,6 @@
 <?php $theme_url = get_template_directory_uri();
 $current_user = wp_get_current_user();
+$profile_image = get_user_meta($current_user->ID, 'profile_image', true);
 ?>
 
 <!DOCTYPE html>
@@ -47,8 +48,12 @@ $current_user = wp_get_current_user();
                                 <?php endif; ?>
                             </span>
                             <div class="profile-img-wrapper">
-                                <img src="<?= $theme_url; ?>/assets/img/dummy-user.webp" alt="profile-pic" class="profile-pic" width="42"
-                                    height="42">
+                                <?php if ($profile_image): ?>
+                                    <img src="<?php echo esc_url($profile_image); ?>" alt="Profile Image" width="42" height="42" class="profile-pic">
+                                <?php else: ?>
+                                    <img src="<?= $theme_url; ?>/assets/img/dummy-user.webp" alt="profile-pic" class="profile-pic" width="42"
+                                        height="42">
+                                <?php endif; ?>
                             </div>
                             <div class="profile-dropdown">
                                 <span class="text-white d-block font-gilroy-bold">
@@ -60,9 +65,10 @@ $current_user = wp_get_current_user();
                                 </span>
                                 <p class="mb-2"><?= $current_user->user_email; ?></p>
                                 <div class="w-100" style="border-bottom: 1px solid #55C2FF; opacity: .3; margin: 16px 0;"></div>
+                                <a href="<?= home_url('/profile') ?>" class="fw-medium d-block">Ajustes</a>
                                 <a href="<?= home_url('/notes') ?>" class="fw-medium d-block">Notes</a>
                                 <div class="w-100" style="border-bottom: 1px solid #55C2FF; opacity: .3; margin: 16px 0;"></div>
-                                <a href="<?= wp_logout_url(home_url()) ?>" class="fw-medium text-skyblue">Logout</a>
+                                <a href="#" class="fw-medium text-skyblue" data-target="#logoutModal">Logout</a>
                             </div>
                         </div>
                         <button class='menu-toggler' type='button'>

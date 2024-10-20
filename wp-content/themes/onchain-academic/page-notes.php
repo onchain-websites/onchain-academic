@@ -93,7 +93,7 @@
 <!-- Modal structure -->
 <div id="notesModal" class="modal notes-modal">
     <div class="modal-content" style="max-width: 700px;">
-        <span class="close">&times;</span>
+        <span class="close close-modal">&times;</span>
         <div class="d-flex justify-content-between">
             <span class="d-block h5 font-gilroy-bold" id="modalCourseTitle"></span>
             <select id="moduleSelector"></select>

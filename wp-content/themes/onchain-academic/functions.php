@@ -6,6 +6,7 @@ class OnchainTheme
         'auth' => 'auth',
         'play' => 'course',
         'notes' => 'notes',
+        'profile' => 'auth',
     );
 
     public function __construct()
@@ -73,7 +74,6 @@ class OnchainTheme
             wp_enqueue_style('single', get_template_directory_uri() . '/assets/css/course.css', array(), date("ymd-Gis", filemtime(get_template_directory())));
         } elseif (is_home()) {
             wp_enqueue_style('home', get_template_directory_uri() . '/assets/css/home.css', array(), date("ymd-Gis", filemtime(get_template_directory())));
-
         } else {
 
             $post = get_post();
@@ -288,7 +288,7 @@ function load_more_courses_ajax_handler()
                     $modulei++;
                 endwhile; ?>
             <?php endif; ?>
-<?php
+        <?php
         endwhile;
         wp_reset_postdata();
     else :
@@ -394,7 +394,8 @@ add_action('save_post', 'save_note_meta_boxes');
 
 // modal data fetch start
 
-function load_user_notes() {
+function load_user_notes()
+{
     // Check if user is logged in
     if (!is_user_logged_in()) {
         wp_send_json_error('You must be logged in to view notes.');
@@ -457,7 +458,8 @@ add_action('wp_ajax_nopriv_load_user_notes', 'load_user_notes');
 
 add_action('wp_ajax_load_modules', 'load_modules');
 
-function load_modules() {
+function load_modules()
+{
     // Check if course ID is provided
     if (isset($_POST['course_id'])) {
         $course_id = intval($_POST['course_id']);
@@ -489,10 +491,10 @@ function load_modules() {
                 }
             }
         }
-        
+
         // Restore original Post Data
         wp_reset_postdata();
-        
+
         sort($modules);
         // Send back the unique modules as JSON response
         wp_send_json_success(array('modules' => $modules));
@@ -501,3 +503,198 @@ function load_modules() {
     }
 }
 
+
+// profile start
+
+function custom_profile_image_and_name_upload_form()
+{
+    if (is_user_logged_in()) {
+        // Get current user data
+        $user_id = get_current_user_id();
+        $user_info = get_userdata($user_id);
+        $email = $user_info->user_email;
+        $profile_image = get_user_meta($user_id, 'profile_image', true); // Fetch existing profile image URL
+        $first_name = $user_info->first_name;
+        $last_name = $user_info->last_name;
+        $full_name = trim($first_name . ' ' . $last_name); // Combine first and last name
+        $theme_url = get_template_directory_uri();
+
+        // HTML form to upload profile image and update full name
+        ob_start();
+        ?>
+        <form id="profile-image-upload-form" method="post" enctype="multipart/form-data">
+            <div class="d-flex justify-content-center">
+                <label class="profile-img-wrapper">
+                    <?php if ($profile_image): ?>
+                        <img src="<?php echo esc_url($profile_image); ?>" alt="Profile Image" width="108" height="108" class="profile-pic">
+                    <?php else: ?>
+                        <img src="<?= $theme_url; ?>/assets/img/dummy-user.webp" alt="profile-pic" class="profile-pic" width="108"
+                            height="108">
+                    <?php endif; ?>
+                    <img src="<?= $theme_url; ?>/assets/img/icons/camera-ico.webp" alt="camera-ico" class="camera-icon" width="43" height="43">
+                    <input type="file" name="profile_image" id="profile_image" accept="image/*" hidden>
+                </label>
+            </div>
+            <div class="input-wrapper">
+                <label for="full_name" class="form-label font-gilroy-bold">Nombre Completo</label>
+                <div class="position-relative">
+                    <input type="text" name="full_name" id="full_name" class="form-control" value="<?php echo esc_attr($full_name); ?>"><br>
+                    <div class="custom-border"></div>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <label for="email" class="form-label font-gilroy-bold">Email Address</label>
+                <div class="position-relative">
+                    <input type="email" id="email" class="form-control" value="<?php echo esc_attr($email); ?>" style="cursor: no-drop;" disabled>
+                    <div class="custom-border"></div>
+                </div>
+            </div>
+
+            <button class="custom-btn font-gilroy-bold captialize" type="submit" name="upload_profile_data">
+                <span class="position-relative text-gradient" style="z-index: 1;">ACTUALIZAR DATOS PERSONALES</span>
+            </button>
+        </form>
+
+    <?php
+        return ob_get_clean();
+    } else {
+        return '<p>You must be logged in to update your profile.</p>';
+    }
+}
+add_shortcode('profile_image_and_fullname_upload_form', 'custom_profile_image_and_name_upload_form');
+
+
+function handle_profile_data_with_fullname_upload()
+{
+    if (isset($_POST['upload_profile_data'])) {
+        // Check if the user is logged in
+        if (!is_user_logged_in()) {
+            return;
+        }
+
+        $user_id = get_current_user_id();
+
+        // Update first name and last name from full name
+        if (isset($_POST['full_name'])) {
+            $full_name = sanitize_text_field($_POST['full_name']);
+
+            // Split full name into first and last name
+            $name_parts = explode(' ', $full_name);
+            $first_name = array_shift($name_parts); // First part of the name
+            $last_name = implode(' ', $name_parts); // Remaining parts as last name
+
+            wp_update_user(array(
+                'ID' => $user_id,
+                'first_name' => $first_name,
+                'last_name' => $last_name
+            ));
+        }
+
+        // Handle the profile image upload
+        if (isset($_FILES['profile_image']) && !empty($_FILES['profile_image']['name'])) {
+            if (!function_exists('wp_handle_upload')) {
+                require_once(ABSPATH . 'wp-admin/includes/file.php');
+            }
+
+            $uploadedfile = $_FILES['profile_image'];
+            $upload_overrides = array('test_form' => false);
+
+            // Upload the image and get the upload data
+            $movefile = wp_handle_upload($uploadedfile, $upload_overrides);
+
+            if ($movefile && !isset($movefile['error'])) {
+                // Save the image URL in user meta
+                update_user_meta($user_id, 'profile_image', $movefile['url']);
+            } else {
+                // Handle the error
+                echo "Error uploading file: " . $movefile['error'];
+            }
+        }
+    }
+}
+add_action('init', 'handle_profile_data_with_fullname_upload');
+
+
+function custom_password_update_form()
+{
+    if (is_user_logged_in()) {
+        ob_start();
+    ?>
+        <form id="password-update-form" method="post">
+            <div class="input-wrapper">
+                <label for="current_password" class="form-label">Contraseña Actual</label>
+                <div class="position-relative">
+                    <input type="password" name="current_password" id="current_password" class="form-control" required placeholder="Introduce Contraseña Actual">
+                    <div class="custom-border"></div>
+                </div>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="new_password" class="form-label">Nueva Contraseña</label>
+                <div class="position-relative">
+                    <input type="password" name="new_password" id="new_password" class="form-control" required placeholder="Introduce Nueva Contraseña">
+                    <div class="custom-border"></div>
+                </div>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
+                <div class="position-relative">
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" required placeholder="Confirma Nueva Contraseña">
+                    <div class="custom-border"></div>
+                </div>
+
+            </div>
+
+            <button class="custom-btn font-gilroy-bold captialize" type="submit" name="update_password">
+                <span class="position-relative text-gradient" style="z-index: 1;">ACTUALIZAR CONTRASEÑA</span>
+            </button>
+        </form>
+
+<?php
+        return ob_get_clean();
+    } else {
+        return '<p>You must be logged in to update your password.</p>';
+    }
+}
+add_shortcode('password_update_form', 'custom_password_update_form');
+
+function handle_password_update()
+{
+    if (isset($_POST['update_password'])) {
+        // Check if the user is logged in
+        if (!is_user_logged_in()) {
+            return;
+        }
+
+        $user_id = get_current_user_id();
+        $user = get_userdata($user_id);
+
+        // Get the posted data
+        $current_password = sanitize_text_field($_POST['current_password']);
+        $new_password = sanitize_text_field($_POST['new_password']);
+        $confirm_password = sanitize_text_field($_POST['confirm_password']);
+
+        // Verify current password
+        if (!wp_check_password($current_password, $user->data->user_pass, $user_id)) {
+            echo 'Current password is incorrect.';
+            return;
+        }
+
+        // Check if the new password and confirm password match
+        if ($new_password !== $confirm_password) {
+            echo 'New passwords do not match.';
+            return;
+        }
+
+        // Update the user's password
+        wp_set_password($new_password, $user_id);
+        echo 'Password successfully updated.';
+
+        // Optionally, log the user out to force them to re-login
+        wp_logout();
+        wp_redirect(wp_login_url());
+        exit();
+    }
+}
+add_action('init', 'handle_password_update');
