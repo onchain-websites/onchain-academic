@@ -7,7 +7,6 @@
 
     <div id="logoutModal" class="modal logout-modal">
         <div class="modal-content" style="max-width: 700px;">
-            <span class="close close-modal">&times;</span>
             <span class="d-block h5 font-gilroy-bold text-center" id="modalCourseTitle">¿Estás Seguro que quieres cerrar sesión en tu cuenta?</span>
             <div class="w-100" style="border-bottom: 1px solid #55C2FF; opacity: .3; margin: 16px 0;"></div>
             <div class="row g-2">

@@ -51,7 +51,7 @@
                                             <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
                                             <a href="" class="text-skyblue"><?= get_post_meta($post->ID, 'course_author_author_name', true); ?></a>
                                         </div>
-                                        <div class="d-flex align-items-center" style="gap: 6px;">
+                                        <div class="d-none align-items-center" style="gap: 6px;">
                                             <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                                             <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                                         </div>
@@ -73,36 +73,42 @@
                         <h2 class="main-title mb-1 captialize"><?php the_sub_field('seciton_title'); ?></h2>
                         <p class="mb-3"><?php the_sub_field('section_paragraph'); ?></p>
                     </div>
-                    <?php $courses = get_sub_field('courses'); ?>
-                    <?php if ($courses) : ?>
+                    <?php if (have_rows('video_urls')) : ?>
                         <div class="multiple-slider multiple overlay overlay-black">
-                            <?php foreach ($courses as $post) : ?>
-                                <?php setup_postdata($post); ?>
+                            <?php while (have_rows('video_urls')) : the_row(); ?>
                                 <div class="slider-item">
-                                    <a href="<?php the_permalink(); ?>">
+                                    <?php $url = get_sub_field('url');
+                                    $query_string = parse_url($url, PHP_URL_QUERY);
+                                    parse_str($query_string, $params);
+                                    $videotitle = urldecode($params['videotitle']);
+                                    $videothumb = urldecode($params['videothumb']);
+                                    $postid = urldecode($params['postid']);
+
+                                    ?>
+                                    <a href="<?= $url; ?>">
                                         <div class="img-wrapper mb-2">
-                                            <img src="<?= get_the_post_thumbnail_url(); ?>" alt="course-thumbnail"
+                                            <img src="<?= $videothumb ?>" alt="course-thumbnail"
                                                 class="slider-img img-fluid" width="304" height="170">
                                             <div class="custom-border"></div>
                                         </div>
                                         <span class="d-block fs-20 font-gilroy-bold mb-1"
-                                            style="text-transform: uppercase;"><?php the_title(); ?></span>
+                                            style="text-transform: uppercase;"><?= $videotitle ?></span>
                                     </a>
                                     <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                                         <div class="d-flex align-items-center" style="gap: 6px;">
                                             <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
-                                            <a href="" class="text-skyblue"><?= get_post_meta($post->ID, 'course_author_author_name', true); ?></a>
+                                            <a href="" class="text-skyblue"><?= get_post_meta($postid, 'course_author_author_name', true); ?></a>
                                         </div>
-                                        <div class="d-flex align-items-center" style="gap: 6px;">
+                                        <div class="d-none align-items-center" style="gap: 6px;">
                                             <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                                             <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                                         </div>
                                     </div>
-                                    <a href="<?php the_permalink(); ?>">
-                                        <p class=""><?= get_the_excerpt(); ?></p>
+                                    <a href="<?= $url; ?>">
+                                        <p class=""><?= get_post_field('post_content', $postid); ?></p>
                                     </a>
                                 </div>
-                            <?php endforeach; ?>
+                            <?php endwhile; ?>
                             <?php wp_reset_postdata(); ?>
                         </div>
                     <?php endif; ?>
@@ -111,13 +117,13 @@
         <?php elseif (get_row_layout() == 'recomended_section') : ?>
             <section class="default-sec recomended-sec single-slider-sec pb-0">
                 <div class="container">
-                    <h2 class="main-title mb-1">Recomendación de youtube</h2>
-                    <p class="mb-3">¡Los últimos vídeos de miembros de Onchain Capital en Youtube</p>
+                    <h2 class="main-title mb-1"><?php the_sub_field('seciton_title'); ?></h2>
+                    <p class="mb-3"><?php the_sub_field('section_paragraph'); ?></p>
                     <div class="position-relative" style="padding: 1px;">
                         <?php if (have_rows('slider')) : ?>
                             <div class="hero-slider single-slider single">
                                 <?php while (have_rows('slider')) : the_row(); ?>
-                                <?php $slide_url = get_sub_field('slide_url'); ?>
+                                    <?php $slide_url = get_sub_field('slide_url'); ?>
                                     <a href="<?= esc_url($slide_url['url']); ?>" class="slider-item">
                                         <?php $slide_image = get_sub_field('slide_image'); ?>
                                         <?php if ($slide_image) : ?>
@@ -142,36 +148,42 @@
                             <h2 class="main-title mb-1"><?php the_sub_field('seciton_title'); ?></h2>
                             <p class="mb-3"><?php the_sub_field('section_paragraph'); ?></p>
                         </div>
-                        <?php if ($courses) : ?>
+                        <?php if (have_rows('video_urls')) : ?>
                             <div class="multiple-slider multiple overlay overlay-blue">
-                                <?php foreach ($courses as $post) : ?>
-                                    <?php setup_postdata($post); ?>
+                                <?php while (have_rows('video_urls')) : the_row(); ?>
                                     <div class="slider-item">
-                                        <a href="<?php the_permalink(); ?>">
+                                        <?php $url = get_sub_field('url');
+                                        $query_string = parse_url($url, PHP_URL_QUERY);
+                                        parse_str($query_string, $params);
+                                        $videotitle = urldecode($params['videotitle']);
+                                        $videothumb = urldecode($params['videothumb']);
+                                        $postid = urldecode($params['postid']);
+
+                                        ?>
+                                        <a href="<?= $url; ?>">
                                             <div class="img-wrapper mb-2">
-                                                <img src="<?= get_the_post_thumbnail_url(); ?>" alt="course-thumbnail"
+                                                <img src="<?= $videothumb ?>" alt="course-thumbnail"
                                                     class="slider-img img-fluid" width="304" height="170">
                                                 <div class="custom-border"></div>
                                             </div>
                                             <span class="d-block fs-20 font-gilroy-bold mb-1"
-                                                style="text-transform: uppercase;"><?php the_title(); ?></span>
+                                                style="text-transform: uppercase;"><?= $videotitle ?></span>
                                         </a>
                                         <div class="d-flex align-items-center gap-2 flex-wrap mb-1">
                                             <div class="d-flex align-items-center" style="gap: 6px;">
                                                 <img src="<?= $theme_url; ?>/assets/img/icons/person.svg" alt="person-img" width="12" height="12">
-                                                <a href="" class="text-skyblue"><?= get_post_meta($post->ID, 'course_author_author_name', true); ?></a>
+                                                <a href="" class="text-skyblue"><?= get_post_meta($postid, 'course_author_author_name', true); ?></a>
                                             </div>
-                                            <div class="d-flex align-items-center" style="gap: 6px;">
+                                            <div class="d-none align-items-center" style="gap: 6px;">
                                                 <img src="<?= $theme_url; ?>/assets/img/icons/lesson.svg" alt="person-img" width="13" height="13">
                                                 <a href="" class="text-skyblue"><span>25</span> Lessons</a>
                                             </div>
                                         </div>
-                                        <a href="<?php the_permalink(); ?>">
-                                            <p class=""><?= get_the_excerpt(); ?></p>
+                                        <a href="<?= $url; ?>">
+                                            <p class=""><?= get_post_field('post_content', $postid); ?></p>
                                         </a>
                                     </div>
-                                <?php endforeach; ?>
-                                <?php wp_reset_postdata(); ?>
+                                <?php endwhile; ?>
                             </div>
                         <?php endif; ?>
                     </div>

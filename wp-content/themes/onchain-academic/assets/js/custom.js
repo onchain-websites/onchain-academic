@@ -1,4 +1,14 @@
 jQuery(document).ready(function ($) {
+  jQuery(window).scroll(function () {
+    var scroll = jQuery(window).scrollTop();
+
+    if (scroll >= 100) {
+      jQuery(".header").addClass("active");
+    } else {
+      jQuery(".header").removeClass("active");
+    }
+  });
+
   $('.single-slider').slick({
     infinite: true,
     slidesToShow: 1,
@@ -151,14 +161,14 @@ jQuery(document).ready(function ($) {
           var notes = response.data;
 
           console.log(notes);
-          
+
           // Clear any previous notes display
           $('#notes-container').empty();
 
           // Loop through the notes and display them
           $.each(notes, function (index, note) {
             var noteHtml = '<hr>';
-            noteHtml = '<a href="'+ note.url +'" class="note-item">';
+            noteHtml = '<a href="' + note.url + '" class="note-item">';
             noteHtml += '<span class="d-block fs-20 font-gilroy-bold">' + note.video_title + '</span>';
             noteHtml += '<p>' + note.content + '</p>';
             noteHtml += '</a>';
@@ -219,14 +229,14 @@ jQuery(document).ready(function ($) {
 
     setTimeout(() => {
       loadNotes(courseId, parseInt($('#moduleSelector').val()));
-    }, 1500);
+    }, 1800);
 
   });
   $('#moduleSelector').on('change', function () {
     console.log(customCourseId);
-    
+
     $('#notes-container').empty();
-    loadNotes( customCourseId, parseInt($('#moduleSelector').val()))
+    loadNotes(customCourseId, parseInt($('#moduleSelector').val()))
 
   });
 });

@@ -6,6 +6,28 @@
   background-color: var(--navy-blue);
   box-shadow: 0px 4px 8px rgba(#000, 0.06);
   padding: 19px 0;
+  &.active {
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: #ffffff59;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      animation: b-border 1.5s 1 linear;
+      @keyframes b-border {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    }
+  }
   .navbar {
     display: flex;
     align-items: center;
@@ -45,10 +67,10 @@
       cursor: pointer;
       .profile-img-wrapper {
         padding: 2px;
-        background-image: url('./assets/img/profile-img-bg.webp');
+        background-image: url("./assets/img/profile-img-bg.webp");
         background-size: 100% 100%;
         .profile-pic {
-          mask-image: url('./assets/img/profile-clip.png');
+          mask-image: url("./assets/img/profile-clip.png");
           width: 42px;
           height: 37px;
           min-width: 42px;
@@ -61,19 +83,19 @@
         position: absolute;
         top: calc(100% + 40px);
         right: 0;
-        background-color: #0E2243;
+        background-color: #0e2243;
         padding: 16px;
         border-radius: 10px;
         display: none;
         &::before {
           position: absolute;
-          content: '';
+          content: "";
           width: 16px;
           height: 16px;
           border-radius: 2px;
           right: 16px;
           top: -8px;
-          background-color: #0E2243;
+          background-color: #0e2243;
           transform: rotate(45deg);
         }
       }
@@ -87,7 +109,7 @@
   max-width: 362px;
   background: rgb(86, 193, 252);
   background: linear-gradient(90deg, rgba(86, 193, 252, 0) 0%, rgba(86, 193, 252, 0.2) 100%);
-  box-shadow: 10px 19px 38px rgba(#000, .25);
+  box-shadow: 10px 19px 38px rgba(#000, 0.25);
   border-radius: 30px;
   display: flex;
   input {
@@ -95,7 +117,7 @@
     border: none;
     width: 100%;
     color: white;
-    transition: .5s;
+    transition: 0.5s;
     &:focus {
       border: none;
       outline: none;
@@ -108,7 +130,7 @@
 }
 
 @media (max-width: 1301px) {
-  .header{
+  .header {
     .navbar {
       .searchbar-main-wrapper {
         max-width: 740px;
@@ -165,7 +187,7 @@
           max-width: unset;
           width: unset;
           justify-content: end;
-          transition: .5s;
+          transition: 0.5s;
           &:hover {
             input {
               padding: 0;
