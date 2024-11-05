@@ -20,7 +20,7 @@
                 <div class="row g-3 justify-content-center">
                     <div class="col-md-8">
                         <div class="result-wrapper video-result" id="postResults" style="max-height: calc(100vh - 122px); overflow: auto;">
-                            <span class="d-block text-center">No Post Found</span>
+                            <span class="d-block text-center">No se encontró tu búsqueda</span>
                         </div>
                     </div>
                 </div>
