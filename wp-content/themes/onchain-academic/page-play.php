@@ -101,7 +101,7 @@ $current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule'])
                     // Display the form
                 ?>
                     <div class="card round-20 h-100 d-flex flex-column">
-                        <span class="d-block mb-2 h6 uppercase">Notas</span>
+                        <span class="d-block mb-2 h6 uppercase">Notasss</span>
                         <hr class="mb-2 w-100">
                         <form method="post" class="d-flex flex-column gap-1" style="flex-grow: 1;">
                             <textarea name="note_content" id="note_content" rows="6" class="notes-texarea" placeholder="Write your notes here..." require><?= esc_textarea($note_content); ?></textarea>
