@@ -270,8 +270,11 @@ function load_more_courses_ajax_handler()
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="img-wrapper mb-2">
                                         <?php $video_thumbnail = get_sub_field('video_thumbnail'); ?>
-                                        <?php if ($video_thumbnail) : ?>
+                                        <?php if ($video_thumbnail['url']) : ?>
                                             <img src="<?php echo esc_url($video_thumbnail['url']); ?>" alt="course-thumbnail"
+                                                class="slider-img img-fluid" width="304" height="170">
+                                        <?php else : ?>
+                                            <img src="<?= $theme_url; ?>/assets/img/course-no-image-placeholder.webp" alt="course-thumbnail"
                                                 class="slider-img img-fluid" width="304" height="170">
                                         <?php endif; ?>
                                         <div class="custom-border"></div>
@@ -550,7 +553,7 @@ function custom_profile_image_and_name_upload_form()
                 </div>
             </div>
 
-            <button class="custom-btn font-gilroy-bold captialize" type="submit" name="upload_profile_data">
+            <button class="custom-btn font-gilroy-bold uppercase" type="submit" name="upload_profile_data">
                 <span class="position-relative text-gradient" style="z-index: 1;">ACTUALIZAR DATOS PERSONALES</span>
             </button>
         </form>
@@ -646,7 +649,7 @@ function custom_password_update_form()
 
             </div>
 
-            <button class="custom-btn font-gilroy-bold captialize" type="submit" name="update_password">
+            <button class="custom-btn font-gilroy-bold uppercase" type="submit" name="update_password">
                 <span class="position-relative text-gradient" style="z-index: 1;">ACTUALIZAR CONTRASEÑA</span>
             </button>
         </form>
@@ -698,3 +701,47 @@ function handle_password_update()
     }
 }
 add_action('init', 'handle_password_update');
+
+
+
+function load_posts_ajax()
+{
+    // Get the search query from the AJAX request
+    $search_query = isset($_POST['search_query']) ? sanitize_text_field($_POST['search_query']) : '';
+
+    // Query parameters
+    $args = array(
+        'post_type' => 'course', // Change to your custom post type if needed
+        'posts_per_page' => -1, // Retrieve all posts
+        's' => $search_query // Search query
+    );
+
+    // Custom query
+    $query = new WP_Query($args);
+    $output = '';
+
+    // Loop through posts
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $output .= '<a href="' . get_permalink() . '" class="d-block round-20 mb-2" style="background-color: #152536; padding: 10px;" data-title="' . get_the_title() . '">';
+            $output .= '<div class="row g-3"><div class="col-lg-4"><div class="img-wrapper w-100">';
+            $output .= get_the_post_thumbnail(get_the_ID(), 'medium', ['class' => ' img-fluid']);
+            $output .= '<div class="custom-border" style="z-index: 1;"></div>';
+            $output .= '</div></div>';
+            $output .= '<div class="col-lg-8"><span class="h6 text-white d-block">' . get_the_title() . '</span>';
+            $output .= '<p class="card-text show-line-3">' . get_the_excerpt() . '</p>';
+            $output .= '</div></div>';
+            $output .= '</a>';
+        }
+        wp_reset_postdata();
+    } else {
+        $output .= '<p>No posts found.</p>';
+    }
+
+    // Return response
+    echo $output;
+    wp_die(); // This is required to terminate properly
+}
+add_action('wp_ajax_load_posts', 'load_posts_ajax'); // For logged-in users
+add_action('wp_ajax_nopriv_load_posts', 'load_posts_ajax'); // For logged-out users

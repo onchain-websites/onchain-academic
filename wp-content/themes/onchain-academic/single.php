@@ -33,7 +33,7 @@
             </div>
             <div class="col-xl-4">
                 <div class="card round-20">
-                    <span class="d-block mb-2 h4 captialize">about the program</span>
+                    <span class="d-block mb-2 h4 uppercase">SOBRE LA FORMACIÓN</span>
                     <div class="d-flex align-items-center gap-1 flex-wrap mb-1">
                         <?php if (have_rows('course_author')) : ?>
                             <?php while (have_rows('course_author')) : the_row(); ?>
@@ -44,12 +44,12 @@
                                 </div>
                             <?php endwhile; ?>
                         <?php endif; ?>
-                        <div class="d-flex align-items-center" style="gap: 6px;">
+                        <div class="d-none align-items-center" style="gap: 6px;">
                             <img src="<?= $theme_url ?>/assets/img/icons/lesson.svg" alt="person-img" width="13"
                                 height="13">
                             <a href="" class="text-skyblue fs-14"><span>25</span> Lessons</a>
                         </div>
-                        <div class="d-flex align-items-center" style="gap: 6px;">
+                        <div class="d-none align-items-center" style="gap: 6px;">
                             <img src="<?= $theme_url ?>/assets/img/icons/clock.svg" alt="person-img" width="13" height="13">
                             <a href="" class="text-skyblue fs-14">Duration: <span>3.28</span> Hours</a>
                         </div>
@@ -85,7 +85,7 @@
 <section class="default-sec courses-sec">
     <div class="container">
         <div class="main-title-wrapper">
-            <h2 class="main-title mb-1 captialize">explora los episodios</h2>
+            <h2 class="main-title mb-1 uppercase">explora los episodios</h2>
             <p class="mb-3">Sabemos lo mejor para ti. Las mejores opciones para ti.</p>
         </div>
         <?php if (have_rows('module')) : ?>
@@ -101,15 +101,17 @@
                         <?php while (have_rows('video')) : the_row(); ?>
                             <div class="slider-item" title="<?php the_sub_field('video_title'); ?>">
                                 <div class="img-wrapper mb-2">
-                                    <?php $video_thumbnail = get_sub_field('video_thumbnail'); ?>
-                                    <?php if ($video_thumbnail) : ?>
-                                        <img src="<?php echo esc_url($video_thumbnail['url']); ?>" alt="course-thumbnail"
-                                            class="slider-img img-fluid" width="304" height="170">
-                                    <?php endif; ?>
+                                    <?php if (get_sub_field('video_thumbnail')) {
+                                        $video_thumbnail = get_sub_field('video_thumbnail')['url'];
+                                    } else {
+                                        $video_thumbnail = $theme_url . '/assets/img/course-no-image-placeholder.webp';
+                                    } ?>
+                                    <img src="<?= $video_thumbnail; ?>" alt="course-thumbnail"
+                                        class="slider-img img-fluid" width="304" height="170">
                                     <div class="custom-border"></div>
-                                    <button type="button" class="play-btn video-play-btn-query" data-video="<?php the_sub_field('video_url'); ?>" data-postid="<?= get_the_ID(); ?>" data-videotitle="<?php the_sub_field('video_title'); ?>" data-modulecount="<?= $module_count; ?>" data-currentmodule="1" data-videothumb="<?= esc_url($video_thumbnail['url']); ?>"><img src="<?= $theme_url ?>/assets/img/icons/play.svg" alt="play-ico"></button>
+                                    <button type="button" class="play-btn video-play-btn-query" data-video="<?php the_sub_field('video_url'); ?>" data-postid="<?= get_the_ID(); ?>" data-videotitle="<?php the_sub_field('video_title'); ?>" data-modulecount="<?= $module_count; ?>" data-currentmodule="1" data-videothumb="<?= $video_thumbnail; ?>"><img src="<?= $theme_url ?>/assets/img/icons/play.svg" alt="play-ico"></button>
                                 </div>
-                                <span class="d-block fs-20 font-gilroy-bold" style="text-transform: uppercase;">L-<?= $lesson_index; ?>: <?php the_sub_field('video_title'); ?></span>
+                                <span class="d-block fs-20 font-gilroy-bold" style="text-transform: uppercase;"><?= $lesson_index; ?>: <?php the_sub_field('video_title'); ?></span>
                             </div>
                             <?php $lesson_index++; ?>
                         <?php endwhile; ?>

@@ -239,4 +239,30 @@ jQuery(document).ready(function ($) {
     loadNotes(customCourseId, parseInt($('#moduleSelector').val()))
 
   });
+
+
+  // header searchbar
+  $('#searchInput').on('keyup', function () {
+    var filter = $(this).val(); // Get the current input value
+
+    // Check if the input is not empty
+    if (filter.length > 0) {
+      $.ajax({
+        url: base_ajax.ajax_url, // WordPress AJAX URL
+        type: 'POST',
+        data: {
+          action: 'load_posts', // Action hook for AJAX
+          search_query: filter // Pass the search query
+        },
+        success: function (response) {
+          $('#postResults').html(response); // Load the posts into the results container
+        },
+        error: function () {
+          alert('Failed to load posts.');
+        }
+      });
+    } else {
+      $('#postResults').empty(); // Clear results if input is empty
+    }
+  });
 });

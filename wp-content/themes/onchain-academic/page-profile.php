@@ -7,7 +7,7 @@ $theme_url = get_template_directory_uri();
 <section class="auth-sec">
     <div class="container">
         <div class="card round-20">
-            <h1 class="main-title h3 captialize text-center">AJUSTES</h1>
+            <h1 class="main-title h3 uppercase text-center">AJUSTES</h1>
             <div class="w-100" style="border-bottom: 1px solid #29B0FB; margin-bottom: clamp(20px, 5vw, 30px)"></div>
             <div class="tabs">
                 <button class="tablink active" data-tab="profile">Perfil</button>

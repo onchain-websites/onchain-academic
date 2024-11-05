@@ -3,9 +3,10 @@
   width: 100%;
   top: 0;
   z-index: 3;
-  background-color: var(--navy-blue);
+  background-color: #161b22a9;
   box-shadow: 0px 4px 8px rgba(#000, 0.06);
   padding: 19px 0;
+  backdrop-filter: blur(10px);
   &.active {
     &::after {
       content: "";
@@ -143,7 +144,7 @@
   .header {
     padding: 10px 0;
     &.active {
-      background-color: #161b22d6;
+      background-color: #161b22a9;
     }
     .navbar {
       .searchbar-main-wrapper {
@@ -158,7 +159,7 @@
         width: 100vw;
         left: 0;
         padding: 20px;
-        background-color: #161b22d6;
+        background-color: #161b22a9;
         li {
           padding: 0 15px;
           width: 100%;

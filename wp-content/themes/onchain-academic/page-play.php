@@ -1,8 +1,15 @@
-<?php $theme_url = get_template_directory_uri(); ?>
+<?php $theme_url = get_template_directory_uri();
+$postid = isset($_GET['postid']) ? intval($_GET['postid']) : 0;
+$current_video_id = isset($_GET['video']) ? intval($_GET['video']) : 0;
+$current_module_title = "";
+$current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule']) : 0;
+?>
+
 <?= get_header(); ?>
 
-<section class="video-sec pb-0">
+<section class="video-sec pb-0" id="videoSec">
     <div class="container">
+        <button type="button" class="text-white fs-22 d-none study-mode font-gilroy-bold mb-3 study-mode-toggler" style="background-color: transparent;">CERRAR MODO FOCO</button>
         <div class="row g-3">
             <div class="col-xl-8">
                 <div class="video-player-wrapper vimeo-wrapper">
@@ -94,7 +101,7 @@
                     // Display the form
                 ?>
                     <div class="card round-20 h-100 d-flex flex-column">
-                        <span class="d-block mb-2 h6 captialize">Notes</span>
+                        <span class="d-block mb-2 h6 uppercase">Notas</span>
                         <hr class="mb-2 w-100">
                         <form method="post" class="d-flex flex-column gap-1" style="flex-grow: 1;">
                             <textarea name="note_content" id="note_content" rows="6" class="notes-texarea" placeholder="Write your notes here..." require><?= esc_textarea($note_content); ?></textarea>
@@ -104,24 +111,144 @@
                             <input type="hidden" name="current_module" value="<?= $current_module; ?>" />
                             <input type="hidden" name="current_url" value="<?= esc_attr($current_url); ?>" />
                             <?php wp_nonce_field('save_note_action', 'save_note_nonce'); ?>
-                            <input type="submit" name="save_note" class="btn btn-blue" value="Save" />
+                            <input type="submit" name="save_note" class="btn btn-blue" value="GUARDAR" />
                         </form>
                     </div>
                 <?php
                 }
                 ?>
             </div>
-            <div class="col-12">
+            <div class="col-12 study-mode">
                 <div class="d-flex align-items-center justify-content-between gap-2 flex-wrap mb-2">
                     <div>
                         <h1 class="h4 mb-0 font-gilroy-bold" id="lessonTitle"></h1>
-                        <p class="mb-0">Module <span id="currentModuleDisplay"></span>: Foundation</p>
+                        <?php
+
+
+                        if (!$postid) {
+                            echo '<p>Invalid or missing post ID.</p>';
+                            return;
+                        }
+                        $current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule']) : '';
+
+                        // Query the specific post by ID
+                        $args = array(
+                            'post_type' => 'course', // Change to your desired post type
+                            'p'         => $postid, // Query the post by ID
+                        );
+                        $query = new WP_Query($args);
+                        $counter = 1;
+
+                        if ($query->have_posts()) :
+                            while ($query->have_posts()) : $query->the_post();
+                                if (have_rows('module')) :
+                                    while (have_rows('module')) : the_row();
+                                        if ($counter <= (int)$current_module) :
+                                            $current_module_title = get_sub_field('module_ttile');
+                                        endif;
+                                        $counter++;
+                                    endwhile;
+                                endif;
+                            endwhile;
+                            wp_reset_postdata();
+                        else :
+                            echo '<p>No posts found.</p>';
+                        endif;
+                        ?>
+                        <p class="mb-0">Module <span id="currentModuleDisplay"></span>: <?= $current_module_title; ?></p>
                     </div>
                     <div class="d-flex gap-2 align-items-center justify-content-center flex-wrap">
-                        <a href="" class="btn btn-blue"
-                            style="width: calc(100vw - 40px); max-width: 322px;">Study Mode</a>
-                        <a href="" class="btn btn-blue"
-                            style="width: calc(100vw - 40px); max-width: 322px;">NEXT LESSON</a>
+                        <button type="button" class="btn btn-blue study-mode-toggler d-none d-lg-block"
+                            style="width: calc(100vw - 40px); max-width: 322px;">MODO FOCO</button>
+
+                        <?php
+
+
+                        if (!$postid) {
+                            echo '<p>Invalid or missing post ID.</p>';
+                            return;
+                        }
+
+                        // Query the specific post by ID
+                        $args = array(
+                            'post_type' => 'course', // Change to your desired post type
+                            'p'         => $postid, // Query the post by ID
+                        );
+
+                        $query = new WP_Query($args);
+
+                        if ($query->have_posts()) :
+                            while ($query->have_posts()) : $query->the_post();
+                        ?>
+                                <?php
+                                // Get the current video URL from the query parameter
+                                $current_video_url = $current_video_id; // Replace this with actual video URL from the query parameter (e.g., $_GET['video'])
+
+                                $found_current = false; // Flag to know when we find the current video
+                                $next_video = null;     // To store the next video details
+
+                                $module_count = 1;
+                                $current_module = 1;
+
+                                // Loop through all modules
+                                if (have_rows('module')) :
+                                    while (have_rows('module')) : the_row();
+                                        $module_count++;
+                                    endwhile;
+                                    while (have_rows('module')) : the_row();
+
+                                        // Check if the module has videos
+                                        if (have_rows('video')) :
+
+                                            // Loop through videos in this module
+                                            while (have_rows('video')) : the_row();
+                                                $video_title = get_sub_field('video_title');
+                                                $video_url = get_sub_field('video_url');
+                                                $video_thumbnail = get_sub_field('video_thumbnail');
+
+                                                // If we already found the current video, the next video is this one
+                                                if ($found_current) {
+                                                    // Set the next video details
+                                                    $next_video = [
+                                                        'title' => $video_title,
+                                                        'url' => $video_url,
+                                                        'thumbnail' => $video_thumbnail
+                                                    ];
+                                                    break 2; // Exit both the video and module loops
+                                                }
+
+                                                // If this is the current video, mark it as found
+                                                if ((int)$video_url === $current_video_url) {
+                                                    $found_current = true;
+                                                }
+                                            endwhile;
+                                        endif;
+                                        
+                                        $current_module++;
+                                    endwhile;
+
+                                    // If we have found the next video, display its details
+                                    if ($next_video) : ?>
+
+                                        <a href="/play?video=<?= rawurlencode($next_video['url']) ?>&postid=<?= rawurlencode($postid) ?>&videotitle=<?= rawurlencode($next_video['title']) ?>&modulecount=<?= rawurlencode($module_count) ?>&currentmodule=<?= $current_module; ?>&videothumb=<?= rawurlencode($next_video['thumbnail']['url']) ?>" class="btn btn-blue" id="next_lesson_btn" style="width: calc(100vw - 40px); max-width: 322px;">Siguiente lección</a>
+                                <?php
+                                    endif;
+
+                                else :
+                                    echo '<p>No modules found.</p>';
+                                endif;
+
+                                ?>
+
+
+                        <?php
+                            endwhile;
+                            wp_reset_postdata();
+                        else :
+                            echo '<p>No posts found.</p>';
+                        endif;
+                        ?>
+
                     </div>
                 </div>
 
@@ -145,7 +272,7 @@
                     while ($query->have_posts()) : $query->the_post();
                 ?>
                         <div class="card round-20">
-                            <span class="d-block mb-2 h6 captialize">about the program</span>
+                            <span class="d-block mb-2 h6 uppercase">SOBRE LA FORMACIÓN</span>
                             <div class="d-flex align-items-center gap-1 flex-wrap mb-1">
                                 <div class="d-flex align-items-center" style="gap: 6px;">
                                     <img src="<?= $theme_url; ?>/assets/img/icons/play-circle-ico.svg" alt="person-img" width="14"
@@ -172,11 +299,11 @@
     </div>
     <div class="obj obj-2"></div>
 </section>
-<section class="default-sec courses-sec">
+<section class="default-sec courses-sec study-mode">
     <div class="container">
-        <div class="main-title-wrapper d-flex gap-2 flex-wrap align-items-center justify-content-between mb-3">
+        <div class="d-flex gap-2 flex-wrap align-items-center justify-content-between mb-3">
             <div>
-                <h2 class="main-title mb-1 captialize">explora los episodios</h2>
+                <h2 class="main-title mb-1 uppercase">explora los episodios</h2>
                 <p class="mb-0">Sabemos lo mejor para ti. Las mejores opciones para ti.</p>
             </div>
             <select id="moduleSelector"></select>
@@ -272,7 +399,21 @@
 
         updateBtns();
 
+        $('.study-mode-toggler').on('click', function() {
+            $('.study-mode').add('.header').add('.footer').toggle('d-none');
 
+            if (!document.fullscreenElement) {
+                $('#videoSec').css('min-height', 'calc(100vh - 96px)')
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                $('#videoSec').css('min-height', 'unset')
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        });
 
     });
 </script>

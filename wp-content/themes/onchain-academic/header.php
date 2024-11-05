@@ -33,14 +33,14 @@ $profile_image = get_user_meta($current_user->ID, 'profile_image', true);
                                             src="<?= $theme_url; ?>/assets/img/icons/instagram.svg" alt="instagram-icon" width="19"
                                             height="19">INSTAGRAM</a></li>
                             </ul>
-                            <div class="searchbar-wrapper">
+                            <div class="searchbar-wrapper" style="pointer-event: none;" data-target="#courseResultModal">
                                 <input type="text" placeholder="Busca tu contenido">
                                 <img src="<?= $theme_url; ?>/assets/img/icons/search-icon.svg" alt="search-icon">
                                 <div class="custom-border"></div>
                             </div>
                         </div>
                         <div class="profile-wrapper">
-                            <span class="d-block text-white font-abel" style="white-space: nowrap;">
+                            <span class="d-block text-white font-gilroy-semibold" style="white-space: nowrap;">
                                 <?php if ($current_user->first_name) : ?>
                                     <?= $current_user->first_name; ?> <?= $current_user->last_name; ?>
                                 <?php else : ?>
