@@ -246,7 +246,7 @@ jQuery(document).ready(function ($) {
     var filter = $(this).val(); // Get the current input value
 
     // Check if the input is not empty
-    if (filter.length > 0) {
+    if (filter.length > 2) {
       $.ajax({
         url: base_ajax.ajax_url, // WordPress AJAX URL
         type: 'POST',
@@ -262,7 +262,7 @@ jQuery(document).ready(function ($) {
         }
       });
     } else {
-      $('#postResults').empty(); // Clear results if input is empty
+      $('#postResults').html('<p class="text-center">Escribe Algo.</p>'); // Clear results if input is empty
     }
   });
 });

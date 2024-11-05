@@ -709,11 +709,10 @@ function load_posts_ajax()
     // Get the search query from the AJAX request
     $search_query = isset($_POST['search_query']) ? sanitize_text_field($_POST['search_query']) : '';
 
-    // Query parameters
+    // Query parameters for the main posts
     $args = array(
-        'post_type' => 'course', // Change to your custom post type if needed
-        'posts_per_page' => -1, // Retrieve all posts
-        's' => $search_query // Search query
+        'post_type' => 'course',
+        'posts_per_page' => -1,
     );
 
     // Custom query
@@ -724,19 +723,53 @@ function load_posts_ajax()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            $output .= '<a href="' . get_permalink() . '" class="d-block round-20 mb-2" style="background-color: #152536; padding: 10px;" data-title="' . get_the_title() . '">';
-            $output .= '<div class="row g-3"><div class="col-lg-4"><div class="img-wrapper w-100">';
-            $output .= get_the_post_thumbnail(get_the_ID(), 'medium', ['class' => ' img-fluid']);
-            $output .= '<div class="custom-border" style="z-index: 1;"></div>';
-            $output .= '</div></div>';
-            $output .= '<div class="col-lg-8"><span class="h6 text-white d-block">' . get_the_title() . '</span>';
-            $output .= '<p class="card-text show-line-3">' . get_the_excerpt() . '</p>';
-            $output .= '</div></div>';
-            $output .= '</a>';
+            $found = false;
+            $videos_output = '';
+            $module_count = 0;
+            $current_module = 0;
+            // $moduleLoopIndex = 1;
+            while (have_rows('module')) : the_row();
+                $module_count++;
+            endwhile;
+
+            // Check ACF repeater fields for matching 'video_title'
+            if (have_rows('module')) {
+                while (have_rows('module')) : the_row();
+                    // $module_count++;
+      
+                    if (!$found) {
+                        $current_module++;
+                    }
+                    if (have_rows('video')) {
+                        while (have_rows('video')) : the_row();
+                            $video_title = get_sub_field('video_title');
+                            if (stripos($video_title, $search_query) !== false) {
+                                $found = true; // Found a matching video title
+
+                                // Retrieve other video details
+                                $video_thumbnail = get_sub_field('video_thumbnail');
+                                $video_url = get_sub_field('video_url');
+
+
+                                $videos_output .= '<a href="' . home_url() . '/play/?video=' . $video_url . '&postid=' . get_the_ID() . '&videotitle=' . urlencode(esc_html($video_title)) . '&modulecount=' . $module_count . '&currentmodule=' . $current_module . '&videothumb='. urlencode(home_url($video_thumbnail['url'])) .'" class="d-block round-20 mb-2" style="background-color: #152536; padding: 10px;">';
+                                $videos_output .= '<div class="row g-3"><div class="col-lg-4"><div class="img-wrapper w-100">';
+                                $videos_output .= '<img src="' . esc_url($video_thumbnail['url']) . '">';
+                                $videos_output .= '</div></div>';
+                                $videos_output .= '<div class="col-lg-8"><span class="h6 text-white d-block">' . esc_html($video_title) . '</span>';
+                                $videos_output .= '<p class="card-text show-line-3">' . get_the_excerpt() . '</p>';
+                                $videos_output .= '</div></div></a>';
+                            }
+                        endwhile;
+                    }
+                endwhile;
+            }
+
+
+            echo $videos_output;
         }
         wp_reset_postdata();
     } else {
-        $output .= '<p>No posts found.</p>';
+        $output .= '<p>No se encontró tu búsqueda.</p>';
     }
 
     // Return response
