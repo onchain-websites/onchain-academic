@@ -65,10 +65,10 @@ $profile_image = get_user_meta($current_user->ID, 'profile_image', true);
                                 </span>
                                 <p class="mb-2"><?= $current_user->user_email; ?></p>
                                 <div class="w-100" style="border-bottom: 1px solid #55C2FF; opacity: .3; margin: 16px 0;"></div>
-                                <a href="<?= home_url('/profile') ?>" class="fw-medium d-block">Ajustes</a>
-                                <a href="<?= home_url('/notes') ?>" class="fw-medium d-block">Notes</a>
+                                <a href="<?= home_url('/profile') ?>" class="fw-medium d-block mb-1">Ajustes</a>
+                                <a href="<?= home_url('/notes') ?>" class="fw-medium d-block">Notas</a>
                                 <div class="w-100" style="border-bottom: 1px solid #55C2FF; opacity: .3; margin: 16px 0;"></div>
-                                <a href="#" class="fw-medium text-skyblue" data-target="#logoutModal">Logout</a>
+                                <a href="#" class="fw-medium text-skyblue d-block" data-target="#logoutModal">Cerrar sesión</a>
                             </div>
                         </div>
                         <button class='menu-toggler' type='button'>

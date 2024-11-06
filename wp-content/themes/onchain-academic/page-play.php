@@ -155,7 +155,7 @@ $current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule'])
                             echo '<p>No posts found.</p>';
                         endif;
                         ?>
-                        <p class="mb-0">Module <span id="currentModuleDisplay"></span>: <?= $current_module_title; ?></p>
+                        <p class="mb-0">Módulo <span id="currentModuleDisplay"></span>: <?= $current_module_title; ?></p>
                     </div>
                     <div class="d-flex gap-2 align-items-center justify-content-center flex-wrap">
                         <button type="button" class="btn btn-blue study-mode-toggler d-none d-lg-block"
@@ -327,11 +327,11 @@ $current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule'])
 
         $('#lesson_video').attr('src', videoLink);
         $('#lessonTitle').text(videoTitle);
-        $('#moduleCountDisplay').text(moduleCount >= 2 ? 'Modules: ' + moduleCount : 'Module: ' + moduleCount);
+        $('#moduleCountDisplay').text(moduleCount >= 2 ? 'Módulos: ' + moduleCount : 'Módulo: ' + moduleCount);
         $('#currentModuleDisplay').text(currentModule);
 
         for (let i = 1; i <= moduleCount; i++) {
-            $('#moduleSelector').append(`<option value="${i}">Module ${i}</option>`);
+            $('#moduleSelector').append(`<option value="${i}">Módulo ${i}</option>`);
         }
 
 
