@@ -107,15 +107,10 @@
                                     ));
 
                                     ?>
-                                    <?php if ($course->have_posts()) : ?>
-                                        <?php while ($course->have_posts()) : $course->the_post(); ?>
-                                            <?php if (get_post_status() == 'publish') : ?>
-                                                <?php $postStatus = true; ?>
-                                            <?php else : ?>
-                                                <?php $postStatus = false; ?>
-                                            <?php endif; ?>
-                                        <?php endwhile; ?>
-                                        <?php wp_reset_postdata(); ?>
+                                    <?php if (get_sub_field('is_coming_soon') == 1) : ?>
+                                        <?php $postStatus = false; ?>
+                                    <?php else : ?>
+                                        <?php $postStatus = true; ?>
                                     <?php endif; ?>
                                     <a href="<?= $postStatus ? $url : '/' ?>" style="<?= $postStatus ? '' : 'pointer-events: none' ?>">
                                         <div class="img-wrapper mb-2">
@@ -204,16 +199,12 @@
                                             'p' => $postid, // Query for the specific course post ID
                                         ));
                                         ?>
-                                        <?php if ($course->have_posts()) : ?>
-                                            <?php while ($course->have_posts()) : $course->the_post(); ?>
-                                                <?php if (get_post_status() == 'publish') : ?>
-                                                    <?php $postStatus = true; ?>
-                                                <?php else : ?>
-                                                    <?php $postStatus = false; ?>
-                                                <?php endif; ?>
-                                            <?php endwhile; ?>
-                                            <?php wp_reset_postdata(); ?>
+                                        <?php if (get_sub_field('is_coming_soon') == 1) : ?>
+                                            <?php $postStatus = false; ?>
+                                        <?php else : ?>
+                                            <?php $postStatus = true; ?>
                                         <?php endif; ?>
+
                                         <a href="<?= $postStatus ? $url : '/' ?>" style="<?= $postStatus ? '' : 'pointer-events: none' ?>">
                                             <?php if ($videothumb) : ?>
                                                 <div class="img-wrapper mb-2">

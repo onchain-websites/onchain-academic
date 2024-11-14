@@ -104,7 +104,7 @@ $current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule'])
                         <span class="d-block mb-2 h6 uppercase">Notas</span>
                         <hr class="mb-2 w-100">
                         <form method="post" class="d-flex flex-column gap-1" style="flex-grow: 1;">
-                            <textarea name="note_content" id="note_content" rows="6" class="notes-texarea" placeholder="Write your notes here..." require><?= esc_textarea($note_content); ?></textarea>
+                            <textarea name="note_content" id="note_content" rows="6" class="notes-texarea" placeholder="Escribe tus anotaciones aquí..." require><?= esc_textarea($note_content); ?></textarea>
                             <input type="hidden" name="course_id" value="<?= $course_id; ?>" />
                             <input type="hidden" name="video_url" value="<?= $video_url; ?>" />
                             <input type="hidden" name="video_title" value="<?= $video_title; ?>" />

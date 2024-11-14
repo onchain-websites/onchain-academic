@@ -11,33 +11,33 @@ if (is_user_logged_in()) {
 <section class="auth-sec">
     <div class="container">
         <div class="card round-20">
-            <h1 class="main-title h3 captialize text-center">Login TO<br> ONCHAIN CAPITAL</h1>
+            <h1 class="main-title h3 captialize text-center">Acceder a Onchain Capital</h1>
             <div class="w-100" style="border-bottom: 1px solid #29B0FB; margin-bottom: clamp(20px, 5vw, 30px)"></div>
             <form method="post" action="<?php echo wp_login_url(); ?>">
                 <div class="input-wrapper">
-                    <label for="user_login" class="form-label font-gilroy-bold">Username</label>
+                    <label for="user_login" class="form-label font-gilroy-bold">Nombre de usuario o correo electrónico</label>
                     <div class="position-relative">
-                        <input type="text" name="log" id="user_login" required class="form-control" placeholder="Enter your email" />
+                        <input type="text" name="log" id="user_login" required class="form-control" placeholder="Nombre de usuario o correo electrónico"/>
                         <div class="custom-border"></div>
                     </div>
                 </div>
                 <div class="input-wrapper">
-                    <label for="user_pass" class="form-label font-gilroy-bold">Password</label>
+                    <label for="user_pass" class="form-label font-gilroy-bold">Contraseña</label>
                     <div class="position-relative">
                         <div class="custom-border"></div>
-                        <input type="password" name="pwd" id="user_pass" required class="form-control" placeholder="Enter your password" />
+                        <input type="password" name="pwd" id="user_pass" required class="form-control" placeholder="Contraseña" />
                         <button type="button" id="passwordToggler"><img src="<?= $theme_url; ?>/assets/img/icons/eye.svg" alt="eye" width="17" height="14"></button>
                     </div>
                 </div>
                 <div class="input-wrapper">
                     <div class="d-flex align-items-center justify-content-between flex-wrap">
                         <label class="d-flex gap-1 align-items-center">
-                            <input type="checkbox" name="rememberme" value="forever"> Keep me signed in
+                            <input type="checkbox" name="rememberme" value="forever"> Recordarme
                         </label>
-                        <a href="<?php echo wp_lostpassword_url(); ?>" class="text-skyblue">Forgot your password?</a>
+                        <a href="<?php echo wp_lostpassword_url(); ?>" class="text-skyblue">¿Olvidaste tu contraseña?</a>
                     </div>
                 </div>
-                <button class="custom-btn font-gilroy-bold captialize" type="submit"><span class="position-relative text-gradient" style="z-index: 1;">Login</span></button>
+                <button class="custom-btn font-gilroy-bold captialize" type="submit"><span class="position-relative text-gradient" style="z-index: 1;">Conectar</span></button>
                 <input type="hidden" name="redirect_to" value="<?php echo esc_url(home_url('/')); ?>">
                 <?php
 
