@@ -29,7 +29,7 @@ $profile_image = get_user_meta($current_user->ID, 'profile_image', true);
                                         class='d-flex align-items-center gap-1'><img
                                             src="<?= $theme_url; ?>/assets/img/icons/twitter-icon.svg" alt="twitter-icon" width="18"
                                             height="17"> TWITTER</a></li>
-                                <li><a href="#" class='d-flex align-items-center gap-1' target='_blank'><img
+                                <li><a href="https://www.instagram.com/onchain.capital/" class='d-flex align-items-center gap-1' target='_blank'><img
                                             src="<?= $theme_url; ?>/assets/img/icons/instagram.svg" alt="instagram-icon" width="19"
                                             height="19">INSTAGRAM</a></li>
                             </ul>
