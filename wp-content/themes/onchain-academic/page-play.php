@@ -223,7 +223,7 @@ $current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule'])
                                                 }
                                             endwhile;
                                         endif;
-                                        
+
                                         $current_module++;
                                     endwhile;
 
@@ -325,6 +325,7 @@ $current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule'])
         const currentModule = urlParams.get('currentmodule');
 
 
+
         $('#lesson_video').attr('src', videoLink);
         $('#lessonTitle').text(videoTitle);
         $('#moduleCountDisplay').text(moduleCount >= 2 ? 'Módulos: ' + moduleCount : 'Módulo: ' + moduleCount);
@@ -396,6 +397,14 @@ $current_module = isset($_GET['currentmodule']) ? intval($_GET['currentmodule'])
             loadLessons($(this).val())
             updateBtns();
         });
+        setTimeout(() => {
+            if ($('#moduleSelector').val() != currentModule) {
+                $('#courses-container').text('');
+                loadLessons(parseInt(currentModule))
+                updateBtns();
+                $('#moduleSelector').val(currentModule)
+            }
+        }, 800);
 
         updateBtns();
 
