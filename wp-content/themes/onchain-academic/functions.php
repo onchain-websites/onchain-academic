@@ -264,11 +264,19 @@ function load_more_courses_ajax_handler()
                 ?>
 
                         <?php if (have_rows('video')) : ?>
-                            <?php $lesson_index = 1; // Initialize lesson count 
-                            ?>
+                            <?php $lesson_index = 1; ?>
                             <?php while (have_rows('video')) : the_row(); ?>
+                                <?php if (get_sub_field('is_video_comming_soon') == 1) : ?>
+                                    <?php $postStatus = false; ?>
+                                <?php else : ?>
+                                    <?php $postStatus = true; ?>
+                                <?php endif; ?>
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="img-wrapper mb-2">
+                                        <?php if ($postStatus) : ?>
+                                        <?php else : ?>
+                                            <span class="d-block fs-14" style="position: absolute; z-index: 2; top: 10px; right: 10px; background-color: var(--skyblue); color: var(--navy-blue); padding: 2px 6px; border-radius: 6px;">Muy pronto</span>
+                                        <?php endif; ?>
                                         <?php $video_thumbnail = get_sub_field('video_thumbnail'); ?>
                                         <?php if ($video_thumbnail['url']) : ?>
                                             <img src="<?php echo esc_url($video_thumbnail['url']); ?>" alt="course-thumbnail"
@@ -278,7 +286,7 @@ function load_more_courses_ajax_handler()
                                                 class="slider-img img-fluid" width="304" height="170">
                                         <?php endif; ?>
                                         <div class="custom-border"></div>
-                                        <button type="button" class="play-btn video-play-btn-query" data-video="<?php the_sub_field('video_url'); ?>" data-postid="<?= get_the_ID(); ?>" data-videotitle="<?php the_sub_field('video_title'); ?>" data-modulecount="<?= $module_count; ?>" data-currentmodule="<?= $module_number; ?>" data-videothumb="<?= esc_url($video_thumbnail['url']); ?>"><img src="<?= $theme_url ?>/assets/img/icons/play.svg" alt="play-ico"></button>
+                                        <button type="button" class="play-btn video-play-btn-query" data-video="<?php if ($postStatus) : ?><?php the_sub_field('video_url'); ?><?php endif; ?>" data-postid="<?= get_the_ID(); ?>" data-videotitle="<?php the_sub_field('video_title'); ?>" data-modulecount="<?= $module_count; ?>" data-currentmodule="<?= $module_number; ?>" data-videothumb="<?= esc_url($video_thumbnail['url']); ?>" <?php if (!$postStatus) : ?>disabled<?php endif; ?>><img src="<?= $theme_url ?>/assets/img/icons/play.svg" alt="play-ico"></button>
                                     </div>
                                     <span class="d-block fs-20 font-gilroy-bold" style="text-transform: uppercase;">L-<?= $lesson_index; ?>: <?php the_sub_field('video_title'); ?></span>
                                     <?php $lesson_index++; ?>
@@ -736,7 +744,7 @@ function load_posts_ajax()
             if (have_rows('module')) {
                 while (have_rows('module')) : the_row();
                     // $module_count++;
-      
+
                     if (!$found) {
                         $current_module++;
                     }
@@ -751,7 +759,7 @@ function load_posts_ajax()
                                 $video_url = get_sub_field('video_url');
 
 
-                                $videos_output .= '<a href="' . home_url() . '/play/?video=' . $video_url . '&postid=' . get_the_ID() . '&videotitle=' . urlencode(esc_html($video_title)) . '&modulecount=' . $module_count . '&currentmodule=' . $current_module . '&videothumb='. urlencode(home_url($video_thumbnail['url'])) .'" class="d-block round-20 mb-2" style="background-color: #152536; padding: 10px;">';
+                                $videos_output .= '<a href="' . home_url() . '/play/?video=' . $video_url . '&postid=' . get_the_ID() . '&videotitle=' . urlencode(esc_html($video_title)) . '&modulecount=' . $module_count . '&currentmodule=' . $current_module . '&videothumb=' . urlencode(home_url($video_thumbnail['url'])) . '" class="d-block round-20 mb-2" style="background-color: #152536; padding: 10px;">';
                                 $videos_output .= '<div class="row g-3"><div class="col-lg-4"><div class="img-wrapper w-100">';
                                 $videos_output .= '<img src="' . esc_url($video_thumbnail['url']) . '">';
                                 $videos_output .= '</div></div>';
