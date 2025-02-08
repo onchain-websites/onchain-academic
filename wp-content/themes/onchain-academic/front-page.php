@@ -54,7 +54,7 @@
                                             <?php else : ?>
                                                 <span class="d-block fs-14" style="position: absolute; z-index: 2; top: 10px; right: 10px; background-color: var(--skyblue); color: var(--navy-blue); padding: 2px 6px; border-radius: 6px;">Muy pronto</span>
                                             <?php endif; ?>
-                                            <div class="custom-border"></div>
+                                            
                                         </div>
                                         <span class="d-block fs-20 font-gilroy-bold mb-1"
                                             style="text-transform: uppercase;"><?php the_title(); ?></span>
@@ -116,7 +116,7 @@
                                         <div class="img-wrapper mb-2">
                                             <img src="<?= $videothumb ?>" alt="course-thumbnail"
                                                 class="slider-img img-fluid" width="304" height="170">
-                                            <div class="custom-border"></div>
+                                            
                                             <?php if ($postStatus) : ?>
                                             <?php else : ?>
                                                 <span class="d-block fs-14" style="position: absolute; z-index: 2; top: 10px; right: 10px; background-color: var(--skyblue); color: var(--navy-blue); padding: 2px 6px; border-radius: 6px;">Muy pronto</span>
@@ -166,7 +166,7 @@
                                 <?php endwhile; ?>
                             </div>
                         <?php endif; ?>
-                        <div class="custom-border"></div>
+                        
                     </div>
                 </div>
                 <div class="obj obj-1"></div>
@@ -214,7 +214,7 @@
                                                     <img src="<?= $theme_url; ?>/assets/img/course-no-image-placholder.webp" alt="course-thumbnail"
                                                         class="slider-img img-fluid" width="304" height="170">
                                                 <?php endif; ?>
-                                                <div class="custom-border"></div>
+                                                
                                                 <?php if ($postStatus) : ?>
                                                 <?php else : ?>
                                                     <span class="d-block fs-14" style="position: absolute; z-index: 2; top: 10px; right: 10px; background-color: var(--skyblue); color: var(--navy-blue); padding: 2px 6px; border-radius: 6px;">Muy pronto</span>
@@ -271,7 +271,7 @@
                                         <?php if ($slider_image) : ?>
                                             <img src="<?php echo esc_url($slider_image['url']); ?>" alt="<?php echo esc_attr($slider_image['alt']); ?>"
                                                 class="slider-img img-fluid" width="304" height="387">
-                                            <div class="custom-border"></div>
+                                            
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -305,7 +305,7 @@
             <div class="slider-item">
                 <div class="img-wrapper mb-2">
                     <img src="${decodeURIComponent(videoThumb)}" class="slider-video d-block" width="304" height="170">
-                    <div class="custom-border"></div>
+                    
                     <a href="${url}" class="play-btn"><img src="<?= $theme_url; ?>/assets/img/icons/play.svg" alt="play-ico"></a>
                 </div>
             </div>

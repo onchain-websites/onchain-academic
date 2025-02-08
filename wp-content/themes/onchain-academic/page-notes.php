@@ -53,7 +53,7 @@
                                             <div class="img-wrapper mb-2 position-relative">
                                                 <img src="<?= get_the_post_thumbnail_url(); ?>" alt="course-thumbnail"
                                                     class="slider-img img-fluid" width="304" height="170">
-                                                <div class="custom-border"></div>
+                                                
                                             </div>
                                             <span class="d-block fs-20 font-gilroy-bold"
                                                 style="text-transform: uppercase;"><?= the_title(); ?></span>
