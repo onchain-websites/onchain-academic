@@ -41,7 +41,7 @@
                             <?php foreach ($courses as $post) : ?>
                                 <?php setup_postdata($post); ?>
                                 <div class="slider-item" style="<?= $post->post_status == 'publish' ? '' : 'pointer-events: none' ?>">
-                                    <a href="<?= $post->post_status == 'publish' ? the_permalink() : '/' ?>">
+                                    <a href="<?= $post->post_status == 'publish' ? the_permalink() : 'javascript:void(0)' ?>">
                                         <div class="img-wrapper mb-2">
                                             <?php if (get_the_post_thumbnail_url()) : ?>
                                                 <img src="<?= get_the_post_thumbnail_url(); ?>" alt="course-thumbnail"
@@ -54,7 +54,7 @@
                                             <?php else : ?>
                                                 <span class="d-block fs-14" style="position: absolute; z-index: 2; top: 10px; right: 10px; background-color: var(--skyblue); color: var(--navy-blue); padding: 2px 6px; border-radius: 6px;">Muy pronto</span>
                                             <?php endif; ?>
-                                            
+
                                         </div>
                                         <span class="d-block fs-20 font-gilroy-bold mb-1"
                                             style="text-transform: uppercase;"><?php the_title(); ?></span>
@@ -99,26 +99,44 @@
                                     parse_str($query_string, $params);
                                     $videotitle = urldecode($params['videotitle']);
                                     $videothumb = urldecode($params['videothumb']);
+                                    $videoUrl = urldecode($params['video']);
                                     $postid = urldecode($params['postid']);
-
                                     $course = new WP_Query(array(
                                         'post_type' => 'course',
-                                        'p' => $postid, // Query for the specific course post ID
+                                        'p' => $postid,
                                     ));
-
+                                    if ($course->have_posts()) :
+                                        while ($course->have_posts()) : $course->the_post();
+                                            $current_post = get_post();
+                                            if (have_rows('module')) :
+                                                while (have_rows('module')) : the_row();
+                                                    if (have_rows('video')) :
+                                                        while (have_rows('video')) : the_row();
+                                                            $video_url = get_sub_field('video_url');
+                                                            if ((int)$video_url == $videoUrl) {
+                                                                $found_current = true;
+                                                                $isComingSoon = get_sub_field('is_video_comming_soon');
+                                                            }
+                                                        endwhile;
+                                                    endif;
+                                                endwhile;
+                                            endif;
+                                            if ($current_post->post_status == 'publish' && !$isComingSoon) {
+                                                $postStatus = true;
+                                            } else {
+                                                $postStatus = false;
+                                            };
+                                        endwhile;
+                                        wp_reset_postdata();
+                                    endif;
                                     ?>
-                                    <?php if (get_sub_field('is_coming_soon') == 1) : ?>
-                                        <?php $postStatus = false; ?>
-                                    <?php else : ?>
-                                        <?php $postStatus = true; ?>
-                                    <?php endif; ?>
-                                    <a href="<?= $postStatus ? $url : '/' ?>" style="<?= $postStatus ? '' : 'pointer-events: none' ?>">
+
+                                    <a href="<?= $postStatus ? $url : 'javascript:void(0)' ?>" style="<?= $postStatus ? '' : 'pointer-events: none' ?>">
                                         <div class="img-wrapper mb-2">
                                             <img src="<?= $videothumb ?>" alt="course-thumbnail"
                                                 class="slider-img img-fluid" width="304" height="170">
-                                            
-                                            <?php if ($postStatus) : ?>
-                                            <?php else : ?>
+
+                                            <?php if (!$postStatus) : ?>
                                                 <span class="d-block fs-14" style="position: absolute; z-index: 2; top: 10px; right: 10px; background-color: var(--skyblue); color: var(--navy-blue); padding: 2px 6px; border-radius: 6px;">Muy pronto</span>
                                             <?php endif; ?>
                                         </div>
@@ -166,7 +184,7 @@
                                 <?php endwhile; ?>
                             </div>
                         <?php endif; ?>
-                        
+
                     </div>
                 </div>
                 <div class="obj obj-1"></div>
@@ -193,19 +211,39 @@
                                         parse_str($query_string, $params);
                                         $videotitle = urldecode($params['videotitle']);
                                         $videothumb = urldecode($params['videothumb']);
+                                        $videoUrl = urldecode($params['video']);
                                         $postid = urldecode($params['postid']);
                                         $course = new WP_Query(array(
                                             'post_type' => 'course',
                                             'p' => $postid, // Query for the specific course post ID
                                         ));
+                                        if ($course->have_posts()) :
+                                            while ($course->have_posts()) : $course->the_post();
+                                                $current_post = get_post();
+                                                if (have_rows('module')) :
+                                                    while (have_rows('module')) : the_row();
+                                                        if (have_rows('video')) :
+                                                            while (have_rows('video')) : the_row();
+                                                                $video_url = get_sub_field('video_url');
+                                                                if ((int)$video_url == $videoUrl) {
+                                                                    $found_current = true;
+                                                                    $isComingSoon = get_sub_field('is_video_comming_soon');
+                                                                }
+                                                            endwhile;
+                                                        endif;
+                                                    endwhile;
+                                                endif;
+                                                if ($current_post->post_status == 'publish' && !$isComingSoon) {
+                                                    $postStatus = true;
+                                                } else {
+                                                    $postStatus = false;
+                                                };
+                                            endwhile;
+                                            wp_reset_postdata();
+                                        endif;
                                         ?>
-                                        <?php if (get_sub_field('is_coming_soon') == 1) : ?>
-                                            <?php $postStatus = false; ?>
-                                        <?php else : ?>
-                                            <?php $postStatus = true; ?>
-                                        <?php endif; ?>
 
-                                        <a href="<?= $postStatus ? $url : '/' ?>" style="<?= $postStatus ? '' : 'pointer-events: none' ?>">
+                                        <a href="<?= $postStatus ? $url : 'javascrip:void(0)' ?>" style="<?= $postStatus ? '' : 'pointer-events: none' ?>">
                                             <?php if ($videothumb) : ?>
                                                 <div class="img-wrapper mb-2">
                                                     <img src="<?= $videothumb ?>" alt="course-thumbnail"
@@ -214,7 +252,7 @@
                                                     <img src="<?= $theme_url; ?>/assets/img/course-no-image-placholder.webp" alt="course-thumbnail"
                                                         class="slider-img img-fluid" width="304" height="170">
                                                 <?php endif; ?>
-                                                
+
                                                 <?php if ($postStatus) : ?>
                                                 <?php else : ?>
                                                     <span class="d-block fs-14" style="position: absolute; z-index: 2; top: 10px; right: 10px; background-color: var(--skyblue); color: var(--navy-blue); padding: 2px 6px; border-radius: 6px;">Muy pronto</span>
@@ -271,7 +309,7 @@
                                         <?php if ($slider_image) : ?>
                                             <img src="<?php echo esc_url($slider_image['url']); ?>" alt="<?php echo esc_attr($slider_image['alt']); ?>"
                                                 class="slider-img img-fluid" width="304" height="387">
-                                            
+
                                         <?php endif; ?>
                                     </div>
                                 </div>

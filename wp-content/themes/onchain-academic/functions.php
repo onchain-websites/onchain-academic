@@ -70,6 +70,8 @@ class OnchainTheme
         if (is_front_page()) {
 
             wp_enqueue_style('home', get_template_directory_uri() . '/assets/css/home.css', array(), date("ymd-Gis", filemtime(get_template_directory())));
+        } elseif (is_404()) {
+            wp_enqueue_style('page', get_template_directory_uri() . '/assets/css/page.css', array(), date("ymd-Gis"));
         } elseif (is_single()) {
             wp_enqueue_style('single', get_template_directory_uri() . '/assets/css/course.css', array(), date("ymd-Gis", filemtime(get_template_directory())));
         } elseif (is_home()) {
@@ -285,7 +287,7 @@ function load_more_courses_ajax_handler()
                                             <img src="<?= $theme_url; ?>/assets/img/course-no-image-placeholder.webp" alt="course-thumbnail"
                                                 class="slider-img img-fluid" width="304" height="170">
                                         <?php endif; ?>
-                                        
+
                                         <button type="button" class="play-btn video-play-btn-query" data-video="<?php if ($postStatus) : ?><?php the_sub_field('video_url'); ?><?php endif; ?>" data-postid="<?= get_the_ID(); ?>" data-videotitle="<?php the_sub_field('video_title'); ?>" data-modulecount="<?= $module_count; ?>" data-currentmodule="<?= $module_number; ?>" data-videothumb="<?= esc_url($video_thumbnail['url']); ?>" <?php if (!$postStatus) : ?>disabled<?php endif; ?>><img src="<?= $theme_url ?>/assets/img/icons/play.svg" alt="play-ico"></button>
                                     </div>
                                     <span class="d-block fs-20 font-gilroy-bold" style="text-transform: uppercase;">L-<?= $lesson_index; ?>: <?php the_sub_field('video_title'); ?></span>
@@ -550,14 +552,14 @@ function custom_profile_image_and_name_upload_form()
                 <label for="full_name" class="form-label font-gilroy-bold">Nombre Completo</label>
                 <div class="position-relative">
                     <input type="text" name="full_name" id="full_name" class="form-control" value="<?php echo esc_attr($full_name); ?>"><br>
-                    
+
                 </div>
             </div>
             <div class="input-wrapper">
                 <label for="email" class="form-label font-gilroy-bold">Email Address</label>
                 <div class="position-relative">
                     <input type="email" id="email" class="form-control" value="<?php echo esc_attr($email); ?>" style="cursor: no-drop;" disabled>
-                    
+
                 </div>
             </div>
 
@@ -636,7 +638,7 @@ function custom_password_update_form()
                 <label for="current_password" class="form-label">Contraseña Actual</label>
                 <div class="position-relative">
                     <input type="password" name="current_password" id="current_password" class="form-control" required placeholder="Introduce Contraseña Actual">
-                    
+
                 </div>
             </div>
 
@@ -644,7 +646,7 @@ function custom_password_update_form()
                 <label for="new_password" class="form-label">Nueva Contraseña</label>
                 <div class="position-relative">
                     <input type="password" name="new_password" id="new_password" class="form-control" required placeholder="Introduce Nueva Contraseña">
-                    
+
                 </div>
             </div>
 
@@ -652,7 +654,7 @@ function custom_password_update_form()
                 <label for="confirm_password" class="form-label">Confirmar Contraseña</label>
                 <div class="position-relative">
                     <input type="password" name="confirm_password" id="confirm_password" class="form-control" required placeholder="Confirma Nueva Contraseña">
-                    
+
                 </div>
 
             </div>
